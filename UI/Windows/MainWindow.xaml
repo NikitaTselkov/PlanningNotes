@@ -3,6 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:local="clr-namespace:UI"
         mc:Ignorable="d"
         Title="Planning Notes"
@@ -18,7 +20,13 @@
         </Grid.ColumnDefinitions>
 
         <Grid x:Name="CardsPanel" Grid.Column="{Binding CardsPanelColumnNumber}" Background="{StaticResource Black}">
-            
+
+            <xctk:Zoombox Cursor="Arrow" MinScale="0.5" MaxScale="100">
+                <Grid Width="600" Height="400" Background="Yellow">
+                    <Ellipse Fill="Blue" />
+                </Grid>
+            </xctk:Zoombox>
+
         </Grid>
 
         <Grid x:Name="NotesPanel" Grid.Column="{Binding NotesPanelColumnNumber}" Background="{StaticResource DarkGray}">

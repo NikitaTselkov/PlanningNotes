@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Catel.MVVM" Version="5.12.16" />
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.1.0" />
   </ItemGroup>
 
   <ItemGroup>
