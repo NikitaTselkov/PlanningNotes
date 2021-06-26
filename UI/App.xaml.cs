@@ -5,6 +5,9 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using ViewModels.Windows;
+using ViewModels.WindowService;
+using UI.Windows;
 
 namespace UI
 {
@@ -13,5 +16,23 @@ namespace UI
     /// </summary>
     public partial class App : Application
     {
+        MainViewModel mainVM;
+
+        public App()
+        {
+            DisplayRootRegistry.RegisterWindowType<MainViewModel, MainWindow>();
+        }
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            RunProgramLogic();
+        }
+
+        private void RunProgramLogic()
+        {
+            mainVM = new MainViewModel();
+            DisplayRootRegistry.ShowPresentation(mainVM);
+        }
     }
 }

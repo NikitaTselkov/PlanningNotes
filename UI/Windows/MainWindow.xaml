@@ -1,0 +1,30 @@
+﻿<Window x:Class="UI.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UI"
+        mc:Ignorable="d"
+        Title="Planning Notes"
+        Height="720"
+        Width="1280"
+        WindowState="Maximized">
+    
+    <Grid Background="{StaticResource Black}">
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{Binding LeftPanelWidth}" />
+            <ColumnDefinition Width="{Binding RightPanelWidth}" />
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="CardsPanel" Grid.Column="{Binding CardsPanelColumnNumber}" Background="{StaticResource Black}">
+            
+        </Grid>
+
+        <Grid x:Name="NotesPanel" Grid.Column="{Binding NotesPanelColumnNumber}" Background="{StaticResource DarkGray}">
+
+        </Grid>
+
+    </Grid>
+    
+</Window>
