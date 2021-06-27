@@ -66,5 +66,22 @@ namespace ViewModels.Windows
         }
 
 
+        public RelayCommand SwitchPanels { get; set; }
+
+        public MainViewModel()
+        {
+            SwitchPanels = new RelayCommand(SwitchPanelsMethod);
+        }
+
+        /// <summary>
+        /// Метод меняющий панели местами.
+        /// </summary>
+        public void SwitchPanelsMethod(object param)
+        {
+            byte num = CardsPanelColumnNumber;
+            CardsPanelColumnNumber = NotesPanelColumnNumber;
+            NotesPanelColumnNumber = num;
+        }
+
     }
 }

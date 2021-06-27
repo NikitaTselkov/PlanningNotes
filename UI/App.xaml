@@ -9,9 +9,13 @@
 
         <ResourceDictionary>
 
+            <BitmapImage x:Key="CursorHorizontalMove" UriSource="Icons/CursorHorizontalMove.png" />
+
             <ResourceDictionary.MergedDictionaries>
 
                 <ResourceDictionary Source="Styles/Colors.xaml" />
+
+                <ResourceDictionary Source="Styles/NotesStyles.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
 
