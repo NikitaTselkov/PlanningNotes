@@ -8,6 +8,13 @@
 
   <ItemGroup>
     <None Remove="Icons\CursorHorizontalMove.png" />
+    <None Remove="Styles\Fonts\MavenPro-Black.ttf" />
+    <None Remove="Styles\Fonts\MavenPro-Bold.ttf" />
+    <None Remove="Styles\Fonts\MavenPro-ExtraBold.ttf" />
+    <None Remove="Styles\Fonts\MavenPro-Medium.ttf" />
+    <None Remove="Styles\Fonts\MavenPro-Regular.ttf" />
+    <None Remove="Styles\Fonts\MavenPro-SemiBold.ttf" />
+    <None Remove="Styles\Fonts\MavenPro-VariableFont_wght.ttf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +28,13 @@
 
   <ItemGroup>
     <Resource Include="Icons\CursorHorizontalMove.png" />
+    <Resource Include="Styles\Fonts\MavenPro-Black.ttf" />
+    <Resource Include="Styles\Fonts\MavenPro-Bold.ttf" />
+    <Resource Include="Styles\Fonts\MavenPro-ExtraBold.ttf" />
+    <Resource Include="Styles\Fonts\MavenPro-Medium.ttf" />
+    <Resource Include="Styles\Fonts\MavenPro-Regular.ttf" />
+    <Resource Include="Styles\Fonts\MavenPro-SemiBold.ttf" />
+    <Resource Include="Styles\Fonts\MavenPro-VariableFont_wght.ttf" />
   </ItemGroup>
 
 </Project>

@@ -6,13 +6,19 @@
 
     <Color x:Key="gray">#2A2834</Color>
     <SolidColorBrush x:Key="Gray" Color="{StaticResource gray}" />
-    
+
+    <Color x:Key="lightGray2">#3A3A45</Color>
+    <SolidColorBrush x:Key="LightGray2" Color="{StaticResource lightGray2}" />
+
     <Color x:Key="lightGray">#767381</Color>
     <SolidColorBrush x:Key="LightGray" Color="{StaticResource lightGray}" />
     
     <Color x:Key="darkGray">#1D1C23</Color>
     <SolidColorBrush x:Key="DarkGray" Color="{StaticResource darkGray}" />
 
+    <Color x:Key="opacityGreen">#24353B</Color>
+    <SolidColorBrush x:Key="OpacityGreen" Color="{StaticResource opacityGreen}" />
+    
     <Color x:Key="green">#00D486</Color>
     <SolidColorBrush x:Key="Green" Color="{StaticResource green}" />
 
@@ -21,5 +27,11 @@
 
     <Color x:Key="blue">#3E6A9F</Color>
     <SolidColorBrush x:Key="Blue" Color="{StaticResource blue}" />
-    
+
+    <Color x:Key="red">#9D3A46</Color>
+    <SolidColorBrush x:Key="Red" Color="{StaticResource red}" />
+
+    <Color x:Key="opacityRed">#392C37</Color>
+    <SolidColorBrush x:Key="OpacityRed" Color="{StaticResource opacityRed}" />
+
 </ResourceDictionary>

@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="UI.UserControls.Card"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UI.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" 
+             d:DesignWidth="300"
+             MinWidth="300"
+             MinHeight="450"
+             DataContext="{Binding Card, Source={StaticResource Locator}}">
+    
+    <Grid Background="{StaticResource Gray}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+
+        <Border Margin="15 0" BorderBrush="{StaticResource LightGray2}" BorderThickness="0 0 0 1" VerticalAlignment="Center">
+            <DockPanel Margin="0 0 0 8">
+
+                <TextBlock Text="Sun" FontFamily="/Styles/Fonts/#Maven Pro - SemiBold.ttf" Foreground="White" FontSize="23" />
+
+                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Background = "Transparent">
+                    <TextBlock Text="{Binding ElementName=progressBar, Path=Value, StringFormat={}{0}%}" FontSize="10" Foreground="{StaticResource LightGray}" HorizontalAlignment="Right" />
+                    <ProgressBar x:Name="progressBar" Value="11"  Margin="1" Maximum="100" Height="2" Width="50" IsIndeterminate="False" BorderBrush="{StaticResource LightGray2}" Foreground="{StaticResource Green}" />
+                </StackPanel>
+
+            </DockPanel>
+        </Border>
+
+        <StackPanel x:Name="content" Grid.Row="1">
+            
+        </StackPanel>
+
+        <DockPanel Margin="15 0" Grid.Row="2" HorizontalAlignment="Left">
+
+            <Button Content="In progress" FontFamily="/Styles/Fonts/#Maven Pro - Black.ttf" Style="{StaticResource CardButton}" Background="{StaticResource OpacityGreen}" BorderBrush="{StaticResource Green}" Foreground="{StaticResource Green}" />
+            
+            <Button Content="top priority" FontFamily="/Styles/Fonts/#Maven Pro - Black.ttf" Style="{StaticResource CardButton}" Background="{StaticResource OpacityRed}" BorderBrush="{StaticResource Red}" Foreground="{StaticResource Red}" Margin="10 0" />
+
+        </DockPanel>
+
+    </Grid>
+    
+</UserControl>

@@ -26,9 +26,9 @@
             Background="{StaticResource Black}">
 
             <denxorz:ZoomControl x:Name="zoom" MinZoom="0.5" MaxZoom="100" Background="{StaticResource Black}">
-                <Grid>
-                    <Ellipse Fill="Blue" Width="40" Height="40" />
-                </Grid>
+
+                <UC:Card />
+
             </denxorz:ZoomControl>
 
         </Grid>
