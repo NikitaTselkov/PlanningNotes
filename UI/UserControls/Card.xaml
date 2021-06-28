@@ -36,7 +36,7 @@
 
                 <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Background="Transparent">
                     <TextBlock Text="{Binding ElementName=progressBar, Path=Value, StringFormat={}{0}%}" FontSize="10" Foreground="{StaticResource LightGray}" HorizontalAlignment="Right" />
-                    <ProgressBar x:Name="progressBar" Value="11" Margin="1" Maximum="100" Height="2" Width="50" IsIndeterminate="False" BorderBrush="{StaticResource Gray2}" Foreground="{StaticResource Green}" />
+                    <ProgressBar x:Name="progressBar" Value="{Binding Path=Progress, Mode=OneWay}" Margin="1" Maximum="100" Height="2" Width="50" IsIndeterminate="False" BorderBrush="{StaticResource Gray2}" Foreground="{StaticResource Green}" />
                 </StackPanel>
 
             </DockPanel>
@@ -64,7 +64,7 @@
 
         <DockPanel Margin="15 0" Grid.Row="2" HorizontalAlignment="Left">
 
-            <Button Content="In progress" FontFamily="/Styles/Fonts/#Maven Pro - Black.ttf" Style="{StaticResource CardButton}" Background="{StaticResource OpacityGreen}" BorderBrush="{StaticResource Green}" Foreground="{StaticResource Green}" />
+            <Button Command="{Binding Click}" Content="In progress" FontFamily="/Styles/Fonts/#Maven Pro - Black.ttf" Style="{StaticResource CardButton}" Background="{StaticResource OpacityGreen}" BorderBrush="{StaticResource Green}" Foreground="{StaticResource Green}" />
             
             <Button Content="top priority" FontFamily="/Styles/Fonts/#Maven Pro - Black.ttf" Style="{StaticResource CardButton}" Background="{StaticResource OpacityRed}" BorderBrush="{StaticResource Red}" Foreground="{StaticResource Red}" Margin="10 0" />
 
