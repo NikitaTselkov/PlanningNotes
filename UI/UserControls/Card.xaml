@@ -6,17 +6,20 @@
              xmlns:local="clr-namespace:UI.UserControls"
              xmlns:UCPanels="clr-namespace:UI.UserControls.CardPanels"
              xmlns:cardpanels="clr-namespace:ViewModels.Cards.CardPanels;assembly=ViewModels"
+             xmlns:Converters="clr-namespace:ViewModels.Converters;assembly=ViewModels"
              xmlns:VM="clr-namespace:ViewModels;assembly=ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="300"
              MinWidth="300"
+             MaxWidth="{Binding MaxWidth}"
              MinHeight="450"
-             MaxHeight="600"
+             MaxHeight="610"
              DataContext="{Binding Card, Source={StaticResource Locator}}">
 
     <UserControl.Resources>
         <VM:TemplateSelector x:Key="TemplateSelector" />
+        <Converters:BoolToVisibility x:Key="BoolToVisibility" />
     </UserControl.Resources>
 
     <Grid Background="{StaticResource Gray}">
@@ -24,7 +27,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="45" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="60" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Border Margin="15 37 0 0" BorderThickness="1 0 0 0" BorderBrush="{StaticResource Gray2}" />
@@ -42,18 +45,26 @@
             </DockPanel>
         </Border>
 
-        <Grid x:Name="content" Grid.Row="1" Margin="15 0">
+        <Grid x:Name="content" Grid.Row="1" Margin="15 0 15 5">
 
             <ScrollViewer VerticalScrollBarVisibility="Auto">
 
                 <ItemsControl ItemsSource="{Binding CardPanels}" ItemTemplateSelector="{StaticResource TemplateSelector}">
 
                     <ItemsControl.Resources>
+                        
                         <DataTemplate x:Key="TextCardPanelTemplate">
-
                             <UCPanels:TextCardPanel d:DataContext="{d:DesignInstance Type=cardpanels:TextCardPanelVM}" />
-
                         </DataTemplate>
+
+                        <DataTemplate x:Key="ImageCardPanelTemplate">
+                            <UCPanels:ImageCardPanel d:DataContext="{d:DesignInstance Type=cardpanels:ImageCardPanelVM}" />
+                        </DataTemplate>
+
+                        <DataTemplate x:Key="MetaTextCardPanelTemplate">
+                            <UCPanels:MetaTextCardPanel d:DataContext="{d:DesignInstance Type=cardpanels:MetaTextCardPanelVM}" />
+                        </DataTemplate>
+                        
                     </ItemsControl.Resources>
 
                 </ItemsControl>
@@ -64,9 +75,9 @@
 
         <DockPanel Margin="15 0" Grid.Row="2" HorizontalAlignment="Left">
 
-            <Button Command="{Binding Click}" Content="In progress" FontFamily="/Styles/Fonts/#Maven Pro - Black.ttf" Style="{StaticResource CardButton}" Background="{StaticResource OpacityGreen}" BorderBrush="{StaticResource Green}" Foreground="{StaticResource Green}" />
-            
-            <Button Content="top priority" FontFamily="/Styles/Fonts/#Maven Pro - Black.ttf" Style="{StaticResource CardButton}" Background="{StaticResource OpacityRed}" BorderBrush="{StaticResource Red}" Foreground="{StaticResource Red}" Margin="10 0" />
+            <Button Visibility="{Binding InProgress, Converter={StaticResource BoolToVisibility}}" Content="in progress" FontFamily="/Styles/Fonts/#Maven Pro - Black.ttf" Style="{StaticResource CardButton}" Background="{StaticResource OpacityGreen}" BorderBrush="{StaticResource Green}" Foreground="{StaticResource Green}" />
+
+            <Button Visibility="{Binding IsTopPriority, Converter={StaticResource BoolToVisibility}}" Content="top priority" FontFamily="/Styles/Fonts/#Maven Pro - Black.ttf" Style="{StaticResource CardButton}" Background="{StaticResource OpacityRed}" BorderBrush="{StaticResource Red}" Foreground="{StaticResource Red}" />
 
         </DockPanel>
 

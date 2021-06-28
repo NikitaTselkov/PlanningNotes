@@ -13,6 +13,8 @@ namespace ViewModels
         {
             var fe = (FrameworkElement)container;
             if (item is TextCardPanelVM) return fe.FindResource("TextCardPanelTemplate") as DataTemplate;
+            if (item is ImageCardPanelVM) return fe.FindResource("ImageCardPanelTemplate") as DataTemplate;
+            if (item is MetaTextCardPanelVM) return fe.FindResource("MetaTextCardPanelTemplate") as DataTemplate;
             return null;
         }
     }

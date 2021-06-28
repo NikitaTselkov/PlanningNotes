@@ -14,7 +14,7 @@
 
     <Grid>
 
-        <Border BorderBrush="{StaticResource Gray2}" BorderThickness="1 0 0 0" Margin="0 -15 0 20" />
+        <Border BorderBrush="{StaticResource Gray2}" BorderThickness="1 0 0 0" Margin="0 -100 0 20" />
 
         <Border Background="{StaticResource Gray}" BorderBrush="{StaticResource Gray2}" BorderThickness="1 0 0 1" CornerRadius="0 0 0 15">
 
