@@ -7,11 +7,14 @@
     <Color x:Key="gray">#2A2834</Color>
     <SolidColorBrush x:Key="Gray" Color="{StaticResource gray}" />
 
-    <Color x:Key="lightGray2">#3A3A45</Color>
-    <SolidColorBrush x:Key="LightGray2" Color="{StaticResource lightGray2}" />
+    <Color x:Key="gray2">#3A3A45</Color>
+    <SolidColorBrush x:Key="Gray2" Color="{StaticResource gray2}" />
 
     <Color x:Key="lightGray">#767381</Color>
     <SolidColorBrush x:Key="LightGray" Color="{StaticResource lightGray}" />
+
+    <Color x:Key="lightGray2">#928F9E</Color>
+    <SolidColorBrush x:Key="LightGray2" Color="{StaticResource lightGray2}" />
     
     <Color x:Key="darkGray">#1D1C23</Color>
     <SolidColorBrush x:Key="DarkGray" Color="{StaticResource darkGray}" />

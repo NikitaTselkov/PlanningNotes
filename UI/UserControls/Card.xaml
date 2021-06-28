@@ -4,14 +4,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UI.UserControls"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" 
+             xmlns:UCPanels="clr-namespace:UI.UserControls.CardPanels"
+             xmlns:cardpanels="clr-namespace:ViewModels.Cards.CardPanels;assembly=ViewModels"
+             xmlns:VM="clr-namespace:ViewModels;assembly=ViewModels"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
              d:DesignWidth="300"
              MinWidth="300"
              MinHeight="450"
              DataContext="{Binding Card, Source={StaticResource Locator}}">
-    
-    <Grid Background="{StaticResource Gray}">
+
+    <UserControl.Resources>
+        <VM:TemplateSelector x:Key="TemplateSelector" />
+    </UserControl.Resources>
+
+        <Grid Background="{StaticResource Gray}">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
@@ -19,21 +26,33 @@
             <RowDefinition Height="60" />
         </Grid.RowDefinitions>
 
-        <Border Margin="15 0" BorderBrush="{StaticResource LightGray2}" BorderThickness="0 0 0 1" VerticalAlignment="Center">
+        <Border Margin="15 0" BorderBrush="{StaticResource Gray2}" BorderThickness="0 0 0 1" VerticalAlignment="Center">
             <DockPanel Margin="0 0 0 8">
 
                 <TextBlock Text="Sun" FontFamily="/Styles/Fonts/#Maven Pro - SemiBold.ttf" Foreground="White" FontSize="23" />
 
-                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Background = "Transparent">
+                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Background="Transparent">
                     <TextBlock Text="{Binding ElementName=progressBar, Path=Value, StringFormat={}{0}%}" FontSize="10" Foreground="{StaticResource LightGray}" HorizontalAlignment="Right" />
-                    <ProgressBar x:Name="progressBar" Value="11"  Margin="1" Maximum="100" Height="2" Width="50" IsIndeterminate="False" BorderBrush="{StaticResource LightGray2}" Foreground="{StaticResource Green}" />
+                    <ProgressBar x:Name="progressBar" Value="11" Margin="1" Maximum="100" Height="2" Width="50" IsIndeterminate="False" BorderBrush="{StaticResource Gray2}" Foreground="{StaticResource Green}" />
                 </StackPanel>
 
             </DockPanel>
         </Border>
 
-        <StackPanel x:Name="content" Grid.Row="1">
-            
+        <StackPanel x:Name="content" Grid.Row="1" Margin="15 0">
+
+            <ItemsControl ItemsSource="{Binding CardPanels}" ItemTemplateSelector="{StaticResource TemplateSelector}">
+
+                <ItemsControl.Resources>
+                    <DataTemplate x:Key="TextCardPanelTemplate">
+
+                        <UCPanels:TextCardPanel d:DataContext="{d:DesignInstance Type=cardpanels:TextCardPanelVM}" />
+
+                    </DataTemplate>
+                </ItemsControl.Resources>
+
+            </ItemsControl>
+
         </StackPanel>
 
         <DockPanel Margin="15 0" Grid.Row="2" HorizontalAlignment="Left">

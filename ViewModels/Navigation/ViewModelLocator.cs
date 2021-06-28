@@ -15,17 +15,7 @@ namespace ViewModels.Navigation
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            SimpleIoc.Default.Register<TextCardPanelVM>();
-
             SimpleIoc.Default.Register<CardVM>();
-        }
-
-        public TextCardPanelVM TextCardPanel
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<TextCardPanelVM>();
-            }
         }
 
         public CardVM Card

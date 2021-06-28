@@ -6,6 +6,7 @@
     <denxorz:EqualityToBooleanConverter x:Key="EqualityConverter" />
 
     <Style TargetType="{x:Type denxorz:ZoomControl}">
+        <Setter Property="Mode" Value="Original" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type denxorz:ZoomControl}">

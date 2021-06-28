@@ -13,13 +13,6 @@ namespace UI.UserControls
         public Card()
         {
             InitializeComponent();
-
-            Messenger.Default.Register<ICardPanel>(this, (x) =>
-            {
-                UserControl textCardPanel = new TextCardPanel();
-                textCardPanel.DataContext = x;
-                content.Children.Add(textCardPanel);
-            });
         }
     }
 }

@@ -25,7 +25,7 @@
             Grid.Column="{Binding CardsPanelColumnNumber}"
             Background="{StaticResource Black}">
 
-            <denxorz:ZoomControl x:Name="zoom" MinZoom="0.5" MaxZoom="100" Background="{StaticResource Black}">
+            <denxorz:ZoomControl MinZoom="0.5" MaxZoom="100" Background="{StaticResource Black}">
 
                 <UC:Card />
 

@@ -8,20 +8,26 @@
              d:DesignHeight="100" 
              d:DesignWidth="300"
              MinWidth="300"
-             MinHeight="100"
-             DataContext="{Binding TextCardPanel, Source={StaticResource Locator}}">
+             MinHeight="35"
+             MaxWidth="500">
 
-    <Border Background="{StaticResource Gray}" BorderBrush="{StaticResource LightGray2}" BorderThickness="1 0 0 1" CornerRadius="0 0 0 15">
+    <Grid>
 
-        <TextBlock
-            FontFamily="/Styles/Fonts/#Maven Pro - Black.ttf"
-            FontSize="12"
-            Foreground="{StaticResource LightGray}"
-            Margin="10"
-            TextWrapping="Wrap"
-            Text="{Binding Text}" 
-        />
+        <Border BorderBrush="{StaticResource Gray2}" BorderThickness="1 0 0 0" Margin="0 -15 0 20" />
 
-    </Border>
-    
+        <Border Background="{StaticResource Gray}" BorderBrush="{StaticResource Gray2}" BorderThickness="1 0 0 1" CornerRadius="0 0 0 15">
+
+            <TextBlock
+                FontFamily="/Styles/Fonts/#Maven Pro - Black.ttf"
+                FontSize="12"
+                Foreground="{StaticResource LightGray2}"
+                Margin="10"
+                TextWrapping="Wrap"
+                Text="{Binding Text}" 
+            />
+
+        </Border>
+
+    </Grid>
+
 </UserControl>
