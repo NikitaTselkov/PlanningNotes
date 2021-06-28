@@ -22,6 +22,8 @@
 
                 <ResourceDictionary Source="Styles/NotesStyles.xaml" />
 
+                <ResourceDictionary Source="Styles/CardsPanelStyles.xaml" />
+                
                 <ResourceDictionary Source="Styles/CardStyles.xaml" />
 
             </ResourceDictionary.MergedDictionaries>

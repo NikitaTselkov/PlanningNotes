@@ -12,21 +12,24 @@
              d:DesignWidth="300"
              MinWidth="300"
              MinHeight="450"
+             MaxHeight="600"
              DataContext="{Binding Card, Source={StaticResource Locator}}">
 
     <UserControl.Resources>
         <VM:TemplateSelector x:Key="TemplateSelector" />
     </UserControl.Resources>
 
-        <Grid Background="{StaticResource Gray}">
+    <Grid Background="{StaticResource Gray}">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
+            <RowDefinition Height="45" />
             <RowDefinition Height="*" />
             <RowDefinition Height="60" />
         </Grid.RowDefinitions>
 
-        <Border Margin="15 0" BorderBrush="{StaticResource Gray2}" BorderThickness="0 0 0 1" VerticalAlignment="Center">
+        <Border Margin="15 37 0 0" BorderThickness="1 0 0 0" BorderBrush="{StaticResource Gray2}" />
+
+        <Border Margin="15 0" BorderBrush="{StaticResource Gray2}" BorderThickness="0 0 0 1" VerticalAlignment="Bottom">
             <DockPanel Margin="0 0 0 8">
 
                 <TextBlock Text="Sun" FontFamily="/Styles/Fonts/#Maven Pro - SemiBold.ttf" Foreground="White" FontSize="23" />
@@ -39,21 +42,25 @@
             </DockPanel>
         </Border>
 
-        <StackPanel x:Name="content" Grid.Row="1" Margin="15 0">
+        <Grid x:Name="content" Grid.Row="1" Margin="15 0">
 
-            <ItemsControl ItemsSource="{Binding CardPanels}" ItemTemplateSelector="{StaticResource TemplateSelector}">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
 
-                <ItemsControl.Resources>
-                    <DataTemplate x:Key="TextCardPanelTemplate">
+                <ItemsControl ItemsSource="{Binding CardPanels}" ItemTemplateSelector="{StaticResource TemplateSelector}">
 
-                        <UCPanels:TextCardPanel d:DataContext="{d:DesignInstance Type=cardpanels:TextCardPanelVM}" />
+                    <ItemsControl.Resources>
+                        <DataTemplate x:Key="TextCardPanelTemplate">
 
-                    </DataTemplate>
-                </ItemsControl.Resources>
+                            <UCPanels:TextCardPanel d:DataContext="{d:DesignInstance Type=cardpanels:TextCardPanelVM}" />
 
-            </ItemsControl>
+                        </DataTemplate>
+                    </ItemsControl.Resources>
 
-        </StackPanel>
+                </ItemsControl>
+
+            </ScrollViewer>
+
+        </Grid>
 
         <DockPanel Margin="15 0" Grid.Row="2" HorizontalAlignment="Left">
 
