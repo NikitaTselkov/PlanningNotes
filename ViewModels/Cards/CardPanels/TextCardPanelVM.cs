@@ -4,18 +4,18 @@ using Models.Interfaces;
 namespace ViewModels.Cards.CardPanels
 {
     public class TextCardPanelVM : ViewModelBase, ICardPanel
-    {
+    { 
         /// <summary>
-        /// Возможность редактировать содержимое. 
+        /// Ширина.
         /// </summary>
-        private bool isEdit;
-        public bool IsEdit
+        private double width;
+        public double Width
         {
-            get => isEdit;
+            get => width;
             set
             {
-                isEdit = value;
-                RaisePropertyChanged("IsEdit");
+                width = value;
+                RaisePropertyChanged("Width");
             }
         }
 

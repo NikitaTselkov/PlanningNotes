@@ -12,7 +12,7 @@
              d:DesignHeight="450"
              d:DesignWidth="300"
              MinWidth="300"
-             MaxWidth="{Binding MaxWidth}"
+             MaxWidth="{Binding Width}"
              MinHeight="450"
              MaxHeight="610"
              DataContext="{Binding Card, Source={StaticResource Locator}}">

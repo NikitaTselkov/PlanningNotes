@@ -7,9 +7,9 @@ namespace Models.Interfaces
     public interface ICardPanel
     {
         /// <summary>
-        /// Возможность редактировать содержимое. 
+        /// Ширина.
         /// </summary>
-        public bool IsEdit { get; set; }
+        public double Width { get; set; }
 
         /// <summary>
         /// Если выполнено.
