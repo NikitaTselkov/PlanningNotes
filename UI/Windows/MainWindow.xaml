@@ -7,6 +7,7 @@
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:local="clr-namespace:UI"
         xmlns:UC="clr-namespace:UI.UserControls"
+        xmlns:behaviors="clr-namespace:ViewModels;assembly=ViewModels"
         mc:Ignorable="d"
         Title="Planning Notes"
         Height="720"
@@ -25,9 +26,14 @@
             Grid.Column="{Binding CardsPanelColumnNumber}"
             Background="{StaticResource Black}">
 
-            <denxorz:ZoomControl MinZoom="0.5" MaxZoom="100" Background="{StaticResource Black}">
+            <denxorz:ZoomControl x:Name="zoom" MinZoom="0.5" MaxZoom="10" Background="{StaticResource Black}">
 
-                <UC:Card />
+                <DockPanel>
+
+                    <UC:Card behaviors:DragBehavior.Drag="True" />
+                    <UC:Card behaviors:DragBehavior.Drag="True" />
+
+                </DockPanel>
 
             </denxorz:ZoomControl>
 
