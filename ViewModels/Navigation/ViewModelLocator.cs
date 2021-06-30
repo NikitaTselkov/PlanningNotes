@@ -15,16 +15,16 @@ namespace ViewModels.Navigation
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            SimpleIoc.Default.Register<CardVM>();
+           // SimpleIoc.Default.Register<CardVM>();
         }
 
-        public CardVM Card
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<CardVM>();
-            }
-        }
+        //public CardVM Card
+        //{
+        //    get
+        //    {
+        //        return ServiceLocator.Current.GetInstance<CardVM>();
+        //    }
+        //}
 
         public static void Cleanup()
         {

@@ -14,8 +14,7 @@
              MinWidth="300"
              MaxWidth="{Binding Width}"
              MinHeight="450"
-             MaxHeight="610"
-             DataContext="{Binding Card, Source={StaticResource Locator}}">
+             MaxHeight="610">
 
     <UserControl.Resources>
         <VM:TemplateSelector x:Key="TemplateSelector" />

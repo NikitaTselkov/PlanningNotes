@@ -17,7 +17,7 @@ namespace Models.Interfaces
         /// <summary>
         ///  Список панелей.
         /// </summary>
-        public ObservableCollection<ICardPanel> CardPanels { get; set; }
+        public ObservableCollection<ICardPanel> CardPanels { get; }
 
         /// <summary>
         /// Прогресс выполнения.
@@ -27,11 +27,11 @@ namespace Models.Interfaces
         /// <summary>
         /// Кол-во выполненных заданий.
         /// </summary>
-        public double NumberOfCompletedTasks { get; set; }
+        public double NumberOfCompletedTasks { get; }
 
         /// <summary>
         /// Кол-во заданий.
         /// </summary>
-        public double NumberOfTasks { get; set; }
+        public double NumberOfTasks { get; }
     }
 }

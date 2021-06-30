@@ -1,4 +1,5 @@
-﻿using Catel.Linq;
+﻿using Catel.Collections;
+using Catel.Linq;
 using Catel.MVVM;
 using GalaSoft.MvvmLight.Messaging;
 using Models;
@@ -21,7 +22,7 @@ namespace ViewModels.Cards
         /// <summary>
         ///  Список панелей.
         /// </summary>
-        public ObservableCollection<ICardPanel> CardPanels { get; set; } = new ObservableCollection<ICardPanel>();
+        public ObservableCollection<ICardPanel> CardPanels { get; private set; } = new ObservableCollection<ICardPanel>();
 
         /// <summary>
         /// Если в процессе.
@@ -65,11 +66,6 @@ namespace ViewModels.Cards
         public double NumberOfCompletedTasks
         {
             get => CardPanels.Count(c => c.IsDone == true);
-            set
-            {
-                RaisePropertyChanged("NumberOfCompletedTasks");
-                RaisePropertyChanged("Progress");
-            }
         }
 
         /// <summary>
@@ -78,11 +74,6 @@ namespace ViewModels.Cards
         public double NumberOfTasks
         {
             get => CardPanels.Count;
-            set
-            {
-                RaisePropertyChanged("NumberOfTasks");
-                RaisePropertyChanged("Progress");
-            }
         }
 
         /// <summary>
@@ -99,8 +90,7 @@ namespace ViewModels.Cards
             }
         }
 
-
-        public CardVM()
+        public CardVM(ObservableCollection<ICardPanel> cardPanels)
         {
             CardPanels.CollectionChanged += (s, e) =>
             {
@@ -115,28 +105,14 @@ namespace ViewModels.Cards
                     // Меняет Width у всех ImageCardPanelVM на this.Width.
                     for (int i = 0; i < imageCardPanels.Count(); i++)
                     {
-                        CardPanels[CardPanels.IndexOf(imageCardPanels[i])].Width = this.Width;
+                        ((ImageCardPanelVM)CardPanels[CardPanels.IndexOf(imageCardPanels[i])]).Width = this.Width;
                     }
                 }
+
+                Update();
             };
 
-            CardPanels.Add(new TextCardPanelVM() { Text = "Rank tall boy man them over post now. Off into she bed long fat room. Recommend existence curiosity perfectly favourite get eat she why daughters. Not may too nay busy last song must sell. An newspaper assurance discourse ye certainly. Soon gone game and why many calm have. " });
-
-            var uri = new Uri(@"D:\Downloads\Space.png", UriKind.Absolute);
-
-            CardPanels.Add(new ImageCardPanelVM() { Width = Width, Image = new BitmapImage(uri), Text = "Inhabit hearing perhaps on ye do no. It maids decay as there he. Smallest on suitable disposed do although blessing he juvenile in. Society or if excited forbade. Here name off yet she long sold easy whom. Differed oh cheerful procured pleasure securing suitable in. Hold rich on an he oh fine. Chapter ability shyness article welcome be do on service. And produce say the ten moments parties.Simple innate summer fat appear basket his desire joy.Outward clothes promise at gravity do excited.Sufficient particular impossible by reasonable oh expressiInhabit hearing perhaps on ye do no. It maids decay as there he. Smallest on suitable disposed do although blessing he juvenile in. Society or if excited forbade. Here name off yet she long sold easy whom. Differed oh cheerful procured pleasure securing suitable in. Hold rich on an he oh fine. Chapter ability shyness article welcome be do on service. And produce say the ten moments parties.Simple innate summer fat appear basket his desire joy.Outward clothes promise at gravity do excited.Sufficient particular impossible by reasonable oh expressiInhabit hearing perhaps on ye do no. It maids decay as there he. Smallest on suitable disposed do although blessing he juvenile in. Society or if excited forbade. Here name off yet she long sold easy whom. Differed oh cheerful procured pleasure securing suitable in. Hold rich on an he oh fine. Chapter ability shyness article welcome be do on service. And produce say the ten moments parties.Simple innate summer fat appear basket his desire joy.Outward clothes promise at gravity do excited.Sufficient particular impossible by reasonable oh expressiInhabit hearing perhaps on ye do no. It maids decay as there he. Smallest on suitable disposed do although blessing he juvenile in. Society or if excited forbade. Here name off yet she long sold easy whom. Differed oh cheerful procured pleasure securing suitable in. Hold rich on an he oh fine. Chapter ability shyness article welcome be do on service. And produce say the ten moments parties.Simple innate summer fat appear basket his desire joy.Outward clothes promise at gravity do excited.Sufficient particular impossible by reasonable oh expressiRank tall boy man them over post now. Off into she bed long fat room. Recommend existence curiosity perfectly favourite get eat she why daughters. Not may too nay busy last song must sell. An newspaper assurance discourse ye certainly" });
-
-            CardPanels.Add(new TextCardPanelVM() { Text = "Rank tall boy man them over post now. Off into she bed long fat room. Recommend existence curiosity perfectly favourite get eat she why daughters. Not may too nay busy last song must sell. An newspaper assurance discourse ye certainly. Soon gone game and why many calm have. " });
-
-            CardPanels.Add(new MetaTextCardPanelVM() { Title = "Sunlight", Text = "Rank tall boy tall boy man them over post now. Off into she bed long fat room. Recommend existence post now. Off into she bed long fat room. Recommend existence curiosity" });
-
-            CardPanels.Add(new MetaTextCardPanelVM() { Title = "Sunlight", Text = "Rank tall boy tall boy man them over post now. Off into she bed long fat room. Recommend existence post now. Off into she bed long fat room. Recommend existence curiosity" });
-
-            CardPanels.Add(new TextCardPanelVM() { Text = "Rank tall boy man them over post now. Off into she bed long fat room. Recommend existence curiosity perfectly favourite get eat she why daughters. Not may too nay busy last song must sell. An newspaper assurance discourse ye certainly. Soon gone game and why many calm have. " });
-
-            CardPanels.Add(new MetaTextCardPanelVM() { Title = "Sunlight", Text = "Rank tall boy tall boy man them over post now. Off into she bed long fat room. Recommend existence post now. Off into she bed long fat room. Recommend existence curiosity" });
-
-            CardPanels.Add(new ImageCardPanelVM() { Width = Width, Image = new BitmapImage(uri), Text = "Inhabit hearing perhaps on ye do no. It maids decay as there he. Smallest on suitable disposed do although blessing he juvenile in. Society or if excited forbade. Here name off yet she long sold easy whom. Differed oh cheerful procured pleasure securing suitable in. Hold rich on an he oh fine. Chapter ability shyness article welcome be do on service. And produce say the ten moments parties.Simple innate summer fat appear basket his desire joy.Outward clothes promise at gravity do excited.Sufficient particular impossible by reasonable oh expressiInhabit hearing perhaps on ye do no. It maids decay as there he. Smallest on suitable disposed do although blessing he juvenile in. Society or if excited forbade. Here name off yet she long sold easy whom. Differed oh cheerful procured pleasure securing suitable in. Hold rich on an he oh fine. Chapter ability shyness article welcome be do on service. And produce say the ten moments parties.Simple innate summer fat appear basket his desire joy.Outward clothes promise at gravity do excited.Sufficient particular impossible by reasonable oh expressiInhabit hearing perhaps on ye do no. It maids decay as there he. Smallest on suitable disposed do although blessing he juvenile in. Society or if excited forbade. Here name off yet she long sold easy whom. Differed oh cheerful procured pleasure securing suitable in. Hold rich on an he oh fine. Chapter ability shyness article welcome be do on service. And produce say the ten moments parties.Simple innate summer fat appear basket his desire joy.Outward clothes promise at gravity do excited.Sufficient particular impossible by reasonable oh expressiInhabit hearing perhaps on ye do no. It maids decay as there he. Smallest on suitable disposed do although blessing he juvenile in. Society or if excited forbade. Here name off yet she long sold easy whom. Differed oh cheerful procured pleasure securing suitable in. Hold rich on an he oh fine. Chapter ability shyness article welcome be do on service. And produce say the ten moments parties.Simple innate summer fat appear basket his desire joy.Outward clothes promise at gravity do excited.Sufficient particular impossible by reasonable oh expressiRank tall boy man them over post now. Off into she bed long fat room. Recommend existence curiosity perfectly favourite get eat she why daughters. Not may too nay busy last song must sell. An newspaper assurance discourse ye certainly" });
+            cardPanels.ForEach(f => CardPanels.Add(f));
         }
 
         /// <summary>

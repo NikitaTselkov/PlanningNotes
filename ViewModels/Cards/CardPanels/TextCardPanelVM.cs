@@ -4,21 +4,7 @@ using Models.Interfaces;
 namespace ViewModels.Cards.CardPanels
 {
     public class TextCardPanelVM : ViewModelBase, ICardPanel
-    { 
-        /// <summary>
-        /// Ширина.
-        /// </summary>
-        private double width;
-        public double Width
-        {
-            get => width;
-            set
-            {
-                width = value;
-                RaisePropertyChanged("Width");
-            }
-        }
-
+    {
         /// <summary>
         /// Если выполнено.
         /// </summary>

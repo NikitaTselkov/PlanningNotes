@@ -9,20 +9,6 @@ namespace ViewModels.Cards.CardPanels
     public class MetaTextCardPanelVM : ViewModelBase, ICardPanel
     {
         /// <summary>
-        /// Ширина.
-        /// </summary>
-        private double width;
-        public double Width
-        {
-            get => width;
-            set
-            {
-                width = value;
-                RaisePropertyChanged("Width");
-            }
-        }
-
-        /// <summary>
         /// Если выполнено.
         /// </summary>
         private bool isDone;
