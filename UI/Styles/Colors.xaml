@@ -28,7 +28,7 @@
     <Color x:Key="darkGreen">#0D1E18</Color>
     <SolidColorBrush x:Key="DarkGreen" Color="{StaticResource darkGreen}" />
 
-    <Color x:Key="blue">#3E6A9F</Color>
+    <Color x:Key="blue">#0275FC</Color>
     <SolidColorBrush x:Key="Blue" Color="{StaticResource blue}" />
 
     <Color x:Key="red">#9D3A46</Color>

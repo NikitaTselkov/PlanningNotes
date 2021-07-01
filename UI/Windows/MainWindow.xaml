@@ -27,33 +27,54 @@
             Grid.Column="{Binding CardsPanelColumnNumber}"
             Background="{StaticResource Black}">
 
+
             <denxorz:ZoomControl MinZoom="0.5" MaxZoom="10" Background="{StaticResource Black}">
 
-                <ItemsControl ItemsSource="{Binding Cards}">
+                <Grid>
 
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <DockPanel />
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
+                    <ItemsControl ItemsSource="{Binding ConnectionPoints, Mode=OneWay}">
 
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <Canvas />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <UC:DrawConnection StartPoint="{Binding Path=Key}" EndPoint="{Binding Path=Value}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+
+                    </ItemsControl>
+
+                    <ItemsControl ItemsSource="{Binding Cards}">
+
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <Canvas />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+
                                 <UC:Card
-                                    x:Name="card"
-                                    DataContext="{Binding}"
-                                    d:DataContext="{d:DesignInstance Type=cards:CardVM}"
-                                    behaviors:DragBehavior.Drag="True"
-                                    VerticalAlignment="Center"
-                                    Margin="10">
+                                x:Name="card"
+                                DataContext="{Binding}"
+                                d:DataContext="{d:DesignInstance Type=cards:CardVM}"
+                                behaviors:DragBehavior.Drag="True"
+                                VerticalAlignment="Center"
+                                Margin="10">
                                 </UC:Card>
-                            </Grid>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
 
-                </ItemsControl>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
 
+                    </ItemsControl>
+
+                </Grid>
+                
             </denxorz:ZoomControl>
 
         </Grid>

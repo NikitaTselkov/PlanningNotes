@@ -11,6 +11,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
 using ViewModels.Cards.CardPanels;
@@ -23,6 +24,48 @@ namespace ViewModels.Cards
         ///  Список панелей.
         /// </summary>
         public ObservableCollection<ICardPanel> CardPanels { get; private set; } = new ObservableCollection<ICardPanel>();
+
+        /// <summary>
+        /// Ключ.
+        /// </summary>
+        private Guid key;
+        public Guid Key
+        {
+            get => key;
+            set 
+            {
+                key = value;
+                RaisePropertyChanged("Key");
+            }
+        }
+
+        /// <summary>
+        /// Левая точка подключения.
+        /// </summary>
+        private Point leftPoint;
+        public Point LeftPoint
+        {
+            get => leftPoint;
+            set
+            {
+                leftPoint = value;
+                RaisePropertyChanged("LeftPoint");
+            }
+        }
+
+        /// <summary>
+        /// Правая точка подключения.
+        /// </summary>
+        private Point rightPoint;
+        public Point RightPoint
+        {
+            get => rightPoint;
+            set
+            {
+                rightPoint = value;
+                RaisePropertyChanged("RightPoint");
+            }
+        }
 
         /// <summary>
         /// Если в процессе.
@@ -113,6 +156,8 @@ namespace ViewModels.Cards
             };
 
             cardPanels.ForEach(f => CardPanels.Add(f));
+
+            Key = ConnectionsControl.CreateNewKey(this);
         }
 
         /// <summary>

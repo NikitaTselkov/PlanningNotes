@@ -1,13 +1,19 @@
-﻿using System.Windows;
+﻿using Models;
+using Models.Interfaces;
+using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using ViewModels.Cards;
 
 namespace ViewModels
 {
     public class DragBehavior
     {
         public readonly TranslateTransform Transform = new TranslateTransform();
+        private readonly TranslateTransform _transformLeftPoints = new TranslateTransform();
+        private readonly TranslateTransform _transformRightPoints = new TranslateTransform();
         private Point _elementStartPosition2;
         private Point _mouseStartPosition2;
         private static DragBehavior _instance = new DragBehavior();
@@ -60,7 +66,16 @@ namespace ViewModels
         {
             mouseButtonEventArgs.Handled = true;
 
-            UIElement parent = VisualTreeHelper.GetParent((FrameworkElement)sender) as UIElement;
+            if (((FrameworkElement)sender).DataContext is CardVM cardVM)
+            {
+                _transformLeftPoints.X = cardVM.LeftPoint.X;
+                _transformLeftPoints.Y = cardVM.LeftPoint.Y;
+
+                _transformRightPoints.X = cardVM.RightPoint.X;
+                _transformRightPoints.Y = cardVM.RightPoint.Y;
+            }
+
+                UIElement parent = VisualTreeHelper.GetParent((FrameworkElement)sender) as UIElement;
             _mouseStartPosition2 = mouseButtonEventArgs.GetPosition(parent);
             ((UIElement)sender).CaptureMouse();
         }
@@ -76,10 +91,22 @@ namespace ViewModels
         {
             UIElement parent = VisualTreeHelper.GetParent((FrameworkElement)sender) as UIElement;
             var mousePos = mouseEventArgs.GetPosition(parent);
-            var diff = (mousePos - _mouseStartPosition2);
-            if (!((UIElement)sender).IsMouseCaptured) return;
-            Transform.X = _elementStartPosition2.X + diff.X;
-            Transform.Y = _elementStartPosition2.Y + diff.Y;
+            var diff = mousePos - _mouseStartPosition2;
+
+            if (((UIElement)sender).IsMouseCaptured)
+            {
+                Transform.X = _elementStartPosition2.X + diff.X;
+                Transform.Y = _elementStartPosition2.Y + diff.Y;
+
+                if (((FrameworkElement)sender).DataContext is CardVM cardVM)
+                {
+                    cardVM.LeftPoint = new Point(_transformLeftPoints.X + diff.X, _transformLeftPoints.Y + diff.Y);
+                    cardVM.RightPoint = new Point(_transformRightPoints.X + diff.X, _transformRightPoints.Y + diff.Y);
+
+                    ConnectionsControl.GetConnectionPoints();
+                }
+            }
+
         }
     }
 }

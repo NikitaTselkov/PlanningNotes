@@ -1,9 +1,27 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace Models.Interfaces
 {
     public interface ICard 
     {
+        /// <summary>
+        /// Ключ.
+        /// </summary>
+        public Guid Key { get; set; }
+
+        /// <summary>
+        /// Левая точка подключения.
+        /// </summary>
+        public Point LeftPoint { get; set; }
+
+        /// <summary>
+        /// Правая точка подключения.
+        /// </summary>
+        public Point RightPoint { get; set; }
+
         /// <summary>
         /// Если в процессе.
         /// </summary>

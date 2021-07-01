@@ -75,6 +75,20 @@ namespace ViewModels.Windows
         /// </summary>
         public ObservableCollection<ICard> Cards { get; private set; } = new ObservableCollection<ICard>();
 
+        /// <summary>
+        /// Точки подключения.
+        /// </summary>
+        private Dictionary<Point, Point> connectionPoints;
+        public Dictionary<Point, Point> ConnectionPoints
+        {
+            get => connectionPoints;
+            set
+            {
+                connectionPoints = value;
+                RaisePropertyChanged("ConnectionPoints");
+            }
+        }
+
 
         public RelayCommand SwitchPanels { get; set; }
 
@@ -106,6 +120,19 @@ namespace ViewModels.Windows
             Cards.Add(new CardVM(cardPanels));
 
             Cards.Add(new CardVM(cardPanels2));
+
+            var key = ConnectionsControl.GetKey(Cards[0]);
+            var foreginKey = ConnectionsControl.GetKey(Cards[1]);
+
+            ConnectionsControl.CreateConnection(key, foreginKey);
+
+
+            ConnectionsControl.СonnectionPointsChanged += (sender, e) =>
+            {
+                var points = (Dictionary<Point, Point>)sender;
+
+                ConnectionPoints = new Dictionary<Point, Point>(points);
+            };
         }
 
         /// <summary>

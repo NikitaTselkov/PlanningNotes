@@ -7,6 +7,7 @@
              xmlns:UCPanels="clr-namespace:UI.UserControls.CardPanels"
              xmlns:cardpanels="clr-namespace:ViewModels.Cards.CardPanels;assembly=ViewModels"
              xmlns:Converters="clr-namespace:ViewModels.Converters;assembly=ViewModels"
+             xmlns:UC="clr-namespace:UI.UserControls"
              xmlns:VM="clr-namespace:ViewModels;assembly=ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="450"
@@ -29,6 +30,10 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
+        <UC:PointOfConnection x:Name="LeftPoint" Position="{Binding LeftPoint}" Key="{Binding Key}" HorizontalAlignment="Left" />
+
+        <UC:PointOfConnection x:Name="RightPoint" Position="{Binding RightPoint}" Key="{Binding Key}" HorizontalAlignment="Right" />
+
         <Border Margin="15 37 0 0" BorderThickness="1 0 0 0" BorderBrush="{StaticResource Gray2}" />
 
         <Border Margin="15 0" BorderBrush="{StaticResource Gray2}" BorderThickness="0 0 0 1" VerticalAlignment="Bottom">
@@ -44,14 +49,14 @@
             </DockPanel>
         </Border>
 
-        <Grid x:Name="content" Grid.Row="1" Margin="15 0 15 5">
+        <DockPanel x:Name="content" Grid.Row="1" Margin="15 0 15 5">
 
             <ScrollViewer VerticalScrollBarVisibility="Auto">
 
                 <ItemsControl ItemsSource="{Binding CardPanels}" ItemTemplateSelector="{StaticResource TemplateSelector}">
 
                     <ItemsControl.Resources>
-                        
+
                         <DataTemplate x:Key="TextCardPanelTemplate">
                             <UCPanels:TextCardPanel d:DataContext="{d:DesignInstance Type=cardpanels:TextCardPanelVM}" />
                         </DataTemplate>
@@ -63,14 +68,14 @@
                         <DataTemplate x:Key="MetaTextCardPanelTemplate">
                             <UCPanels:MetaTextCardPanel d:DataContext="{d:DesignInstance Type=cardpanels:MetaTextCardPanelVM}" />
                         </DataTemplate>
-                        
+
                     </ItemsControl.Resources>
 
                 </ItemsControl>
 
             </ScrollViewer>
 
-        </Grid>
+        </DockPanel>
 
         <DockPanel Margin="15 0" Grid.Row="2" HorizontalAlignment="Left">
 
