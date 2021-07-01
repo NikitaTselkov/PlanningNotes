@@ -10,7 +10,7 @@
              d:DesignWidth="10"
              Width="10"
              Height="10"
-             Background="Red"
+             Background="Transparent"
              BorderBrush="Transparent">
     
     <Grid>

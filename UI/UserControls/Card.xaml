@@ -32,7 +32,7 @@
 
         <UC:PointOfConnection x:Name="LeftPoint" Position="{Binding LeftPoint}" Key="{Binding Key}" HorizontalAlignment="Left" />
 
-        <UC:PointOfConnection x:Name="RightPoint" Position="{Binding RightPoint}" Key="{Binding Key}" HorizontalAlignment="Right" />
+        <UC:PointOfConnection x:Name="RightPoint" Position="{Binding RightPoint}" Key="{Binding Key}" HorizontalAlignment="Right" Margin="0 0 -10 0" />
 
         <Border Margin="15 37 0 0" BorderThickness="1 0 0 0" BorderBrush="{StaticResource Gray2}" />
 

@@ -32,7 +32,7 @@
 
                 <Grid>
 
-                    <ItemsControl ItemsSource="{Binding ConnectionPoints, Mode=OneWay}">
+                    <ItemsControl ItemsSource="{Binding ConnectionPoints}" Panel.ZIndex="1">
 
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -42,7 +42,7 @@
 
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <UC:DrawConnection StartPoint="{Binding Path=Key}" EndPoint="{Binding Path=Value}" />
+                                <UC:DrawConnection StartPoint="{Binding Path=Point1}" EndPoint="{Binding Path=Point2}" />
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
 

@@ -9,8 +9,11 @@
              d:DesignHeight="450"
              d:DesignWidth="800">
 
+    <Grid>
 
-    <Path Data="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DrawConnection}}, Path=Data}" x:Name="pathMain" Stroke="{StaticResource Blue}" StrokeThickness="2"/>
+        <Path Data="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DrawConnection}}, Path=LineData}" Stroke="{StaticResource Blue}" StrokeThickness="1"/>
+        <Path Data="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DrawConnection}}, Path=ArrowData}" Fill="{StaticResource Blue}" Stroke="{StaticResource Blue}" StrokeThickness="1"/>
 
-    
+    </Grid>
+
 </UserControl>

@@ -78,8 +78,8 @@ namespace ViewModels.Windows
         /// <summary>
         /// Точки подключения.
         /// </summary>
-        private Dictionary<Point, Point> connectionPoints;
-        public Dictionary<Point, Point> ConnectionPoints
+        private List<ConnectionPoints> connectionPoints;
+        public List<ConnectionPoints> ConnectionPoints
         {
             get => connectionPoints;
             set
@@ -121,17 +121,22 @@ namespace ViewModels.Windows
 
             Cards.Add(new CardVM(cardPanels2));
 
+            Cards.Add(new CardVM(cardPanels2));
+
             var key = ConnectionsControl.GetKey(Cards[0]);
             var foreginKey = ConnectionsControl.GetKey(Cards[1]);
+            var foreginKey2 = ConnectionsControl.GetKey(Cards[2]);
 
             ConnectionsControl.CreateConnection(key, foreginKey);
+
+            ConnectionsControl.CreateConnection(key, foreginKey2);
 
 
             ConnectionsControl.СonnectionPointsChanged += (sender, e) =>
             {
-                var points = (Dictionary<Point, Point>)sender;
+                var points = (List<ConnectionPoints>)sender;
 
-                ConnectionPoints = new Dictionary<Point, Point>(points);
+                ConnectionPoints = new List<ConnectionPoints>(points);
             };
         }
 

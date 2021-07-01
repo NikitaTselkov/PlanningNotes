@@ -17,7 +17,7 @@ namespace ViewModels.Cards
         private static readonly Dictionary<ConnectionData, ConnectionData> Connections = new Dictionary<ConnectionData, ConnectionData>();
 
         // Точки подключения.
-        private static readonly Dictionary<Point, Point> СonnectionPoints = new Dictionary<Point, Point>();
+        private static readonly List<ConnectionPoints> СonnectionPoints = new List<ConnectionPoints>();
 
 
         // Событие изменения точек подключения.
@@ -88,30 +88,13 @@ namespace ViewModels.Cards
         }
 
         /// <summary>
-        /// Получает связи этого элемента.
-        /// </summary>
-        public static Dictionary<ConnectionData, ConnectionData> GetConnections(ICard card)
-        {
-            var result = new Dictionary<ConnectionData, ConnectionData>();
-
-            foreach (var item in Connections)
-            {
-                if (item.Key.Card == card || item.Value.Card == card)
-                {
-                    result.Add(item.Key, item.Value);
-                }
-            }
-
-            return result;
-        }
-
-        /// <summary>
         /// Получает точки связи элемента.
         /// </summary>
         public static void GetConnectionPoints()
         {
             ICard card1;
             ICard card2;
+            ConnectionPoints points;
 
             СonnectionPoints.Clear();
 
@@ -122,11 +105,27 @@ namespace ViewModels.Cards
 
                 if (card1.LeftPoint.X > card2.RightPoint.X)
                 {
-                    СonnectionPoints.Add(card1.LeftPoint, card2.RightPoint);
+                    points = new ConnectionPoints(card1.LeftPoint, card2.RightPoint);
+
+                    СonnectionPoints.Add(points);
                 }
                 else if (card1.RightPoint.X < card2.LeftPoint.X)
                 {
-                    СonnectionPoints.Add(card1.RightPoint, card2.LeftPoint);
+                    points = new ConnectionPoints(card1.RightPoint, card2.LeftPoint);
+
+                    СonnectionPoints.Add(points);
+                }
+                else if (card1.RightPoint.X < card2.RightPoint.X && card1.LeftPoint.X < card2.LeftPoint.X)
+                {
+                    points = new ConnectionPoints(card1.RightPoint, card2.RightPoint);
+
+                    СonnectionPoints.Add(points);
+                }
+                else if (card1.RightPoint.X > card2.RightPoint.X && card1.LeftPoint.X > card2.LeftPoint.X)
+                {
+                    points = new ConnectionPoints(card1.LeftPoint, card2.LeftPoint);
+
+                    СonnectionPoints.Add(points);
                 }
             }
 
