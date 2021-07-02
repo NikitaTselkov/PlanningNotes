@@ -15,7 +15,8 @@
             <Setter Property="Height" Value="40" />
             <Setter Property="Margin" Value="0 10" />
             <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Background" Value="Transparent" />
+                <Setter Property="IsChecked" Value="{Binding ElementName=userControl, Path=IsChecked}" />
+                <Setter Property="Background" Value="Transparent" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="RadioButton">
@@ -47,7 +48,11 @@
                         </Border>
 
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked" Value="True">
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Cursor" Value="Hand" />
+                                </Trigger>
+
+                                <Trigger Property="IsChecked" Value="True">
                                 <Setter TargetName="Line" Property="Visibility" Value="Visible" />
                                 <Setter TargetName="Content" Property="Fill" Value="{StaticResource Green}" />
                             </Trigger>

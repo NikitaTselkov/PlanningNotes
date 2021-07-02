@@ -27,12 +27,22 @@ namespace UI.UserControls
 
         public string SVGPath
         {
-            get { return (string)GetValue(SVGpath); }
-            set{ SetValue(SVGpath, value); }
+            get => (string)GetValue(SVGpath);
+            set => SetValue(SVGpath, value);
         }
 
         public static readonly DependencyProperty SVGpath =
             DependencyProperty.Register("SVGPath", typeof(string), typeof(MenuButton), new PropertyMetadata(string.Empty));
 
+
+
+        public bool IsChecked
+        {
+            get => (bool)GetValue(IsCheckedProperty);
+            set => SetValue(IsCheckedProperty, value);
+        }
+
+        public static readonly DependencyProperty IsCheckedProperty =
+            DependencyProperty.Register("IsChecked", typeof(bool), typeof(MenuButton), new PropertyMetadata(false));
     }
 }

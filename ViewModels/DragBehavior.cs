@@ -75,7 +75,7 @@ namespace ViewModels
                 _transformRightPoints.Y = cardVM.RightPoint.Y;
             }
 
-                UIElement parent = VisualTreeHelper.GetParent((FrameworkElement)sender) as UIElement;
+            UIElement parent = VisualTreeHelper.GetParent((FrameworkElement)sender) as UIElement;
             _mouseStartPosition2 = mouseButtonEventArgs.GetPosition(parent);
             ((UIElement)sender).CaptureMouse();
         }

@@ -26,6 +26,10 @@
                     </Border>
 
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Cursor" Value="Hand" />
+                        </Trigger>
+
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="Content" Property="Width" Value="28" />
                             <Setter TargetName="Content" Property="Height" Value="28" />
