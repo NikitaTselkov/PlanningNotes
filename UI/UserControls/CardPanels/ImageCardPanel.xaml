@@ -37,7 +37,10 @@
 
                             <ScrollViewer MaxHeight="170" Margin="10" VerticalScrollBarVisibility="Auto">
 
-                                <TextBlock   
+                                <TextBox
+                                    IsHitTestVisible="{Binding IsEdit}"
+                                    Background="Transparent"
+                                    BorderThickness="0"
                                     FontFamily="/Styles/Fonts/#Maven Pro - Black.ttf"
                                     FontSize="12"
                                     Foreground="{StaticResource LightGray2}"
@@ -62,7 +65,10 @@
 
                                 <ScrollViewer MaxHeight="128" Margin="10" VerticalScrollBarVisibility="Auto">
 
-                                    <TextBlock   
+                                    <TextBox
+                                        IsHitTestVisible="{Binding IsEdit}"
+                                        Background="Transparent"
+                                        BorderThickness="0"
                                         FontFamily="/Styles/Fonts/#Maven Pro - Black.ttf"
                                         FontSize="12"
                                         Foreground="{StaticResource LightGray2}"

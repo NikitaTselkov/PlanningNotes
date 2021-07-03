@@ -23,6 +23,11 @@ namespace Models.Interfaces
         public Point RightPoint { get; set; }
 
         /// <summary>
+        /// Режим редактирование.
+        /// </summary>
+        public bool IsEdit { get; set; }
+
+        /// <summary>
         /// Если в процессе.
         /// </summary>
         public bool InProgress { get; set; }

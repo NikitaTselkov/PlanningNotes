@@ -64,12 +64,12 @@
                             <DataTemplate>
 
                                 <UC:Card
-                                x:Name="card"
-                                DataContext="{Binding}"
-                                d:DataContext="{d:DesignInstance Type=cards:CardVM}"
-                                behaviors:DragBehavior.Drag="True"
-                                VerticalAlignment="Center"
-                                Margin="10">
+                                    x:Name="card"
+                                    DataContext="{Binding}"
+                                    d:DataContext="{d:DesignInstance Type=cards:CardVM}"
+                                    behaviors:DragBehavior.Drag="True"
+                                    VerticalAlignment="Center"
+                                    Margin="10">
                                 </UC:Card>
 
                             </DataTemplate>
@@ -88,9 +88,9 @@
                 <Border DockPanel.Dock="Right" Margin="0 0 10 0" Width="290" Height="50" Background="{StaticResource DarkGray}" CornerRadius="2">
                     <DockPanel LastChildFill="False">
 
-                        <RadioButton Content="Constructor" Style="{StaticResource DisplayModesButton}" DockPanel.Dock="Right" Margin="0 0 20 0" />
-                        
-                        <RadioButton IsChecked="True" Content="Display" Style="{StaticResource DisplayModesButton}" DockPanel.Dock="Right" />
+                        <RadioButton Content="Constructor" Command="{Binding SwitchEditMode}" CommandParameter="true" Style="{StaticResource DisplayModesButton}" DockPanel.Dock="Right" Margin="0 0 20 0" />
+
+                        <RadioButton IsChecked="True" Content="Display" Command="{Binding SwitchEditMode}" CommandParameter="false" Style="{StaticResource DisplayModesButton}" DockPanel.Dock="Right" />
 
                         <Border Margin="10 0" DockPanel.Dock="Right" Height="15" BorderThickness="1 0 0 0" BorderBrush="{StaticResource LightGray}" />
 

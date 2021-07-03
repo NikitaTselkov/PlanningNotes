@@ -16,7 +16,6 @@
 
         <Border BorderBrush="{StaticResource Gray2}" BorderThickness="1 0 0 0" Margin="0 -15 0 20" />
 
-
         <Grid Background="{StaticResource Gray}">
 
                 <Grid.ColumnDefinitions>
@@ -39,13 +38,17 @@
 
                 <Viewbox Margin="12">
 
-                    <TextBlock   
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
+                    <TextBox
+                        Name="text"
+                        IsHitTestVisible="{Binding IsEdit}"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
                         FontFamily="/Styles/Fonts/#Maven Pro - Black.ttf"
                         FontSize="18"                  
                         Foreground="White"
-                        TextWrapping="Wrap"
+                        TextWrapping="NoWrap"
                         Text="Sunlight" 
                     />
 
@@ -55,7 +58,10 @@
 
             <ScrollViewer Height="100" Margin="10" VerticalScrollBarVisibility="Auto" Grid.Column="1">
 
-                <TextBlock   
+                <TextBox   
+                    IsHitTestVisible="{Binding IsEdit}"
+                    Background="Transparent"
+                    BorderThickness="0"
                     Margin="10 20 0 0"
                     FontFamily="/Styles/Fonts/#Maven Pro - Black.ttf"
                     FontSize="12"
@@ -66,9 +72,7 @@
 
             </ScrollViewer>
 
-            </Grid>
-
- 
+        </Grid>
 
     </Grid>
     

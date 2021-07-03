@@ -1,4 +1,5 @@
-﻿using Catel.MVVM;
+﻿using Catel.Collections;
+using Catel.MVVM;
 using Models;
 using Models.Interfaces;
 using System;
@@ -92,9 +93,13 @@ namespace ViewModels.Windows
 
         public RelayCommand SwitchPanels { get; set; }
 
+        public RelayCommand SwitchEditMode{ get; set; }
+
         public MainViewModel()
         {
             SwitchPanels = new RelayCommand(SwitchPanelsMethod);
+
+            SwitchEditMode = new RelayCommand(SwitchEditModeMethod);
 
             #region Test
 
@@ -148,6 +153,21 @@ namespace ViewModels.Windows
             byte num = CardsPanelColumnNumber;
             CardsPanelColumnNumber = NotesPanelColumnNumber;
             NotesPanelColumnNumber = num;
+        }
+        
+        /// <summary>
+        /// Метод меняющий режим редактирования.
+        /// </summary>
+        public void SwitchEditModeMethod(object param)
+        {
+            if (Convert.ToBoolean(param) == true)
+            {
+                Cards.ForEach(f => f.IsEdit = true);
+            }
+            else
+            {
+                Cards.ForEach(f => f.IsEdit = false);
+            }
         }
 
     }

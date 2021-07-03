@@ -20,7 +20,10 @@
 
             <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10">
 
-                <TextBlock
+                <TextBox
+                    IsHitTestVisible="{Binding IsEdit}"
+                    Background="Transparent"
+                    BorderThickness="0"
                     FontFamily="/Styles/Fonts/#Maven Pro - Black.ttf"
                     FontSize="12"
                     Foreground="{StaticResource LightGray2}"

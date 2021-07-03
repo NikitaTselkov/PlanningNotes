@@ -68,9 +68,52 @@ namespace ViewModels.Cards
         }
 
         /// <summary>
+        /// Если включен режим редактирования.
+        /// </summary>
+        private bool isEdit;
+        public bool IsEdit
+        {
+            get => isEdit;
+            set
+            {
+                isEdit = value;
+                EnableEditMode(isEdit);
+                RaisePropertyChanged("IsEdit");
+            }
+        }
+
+        /// <summary>
+        /// Если в процессе видимый.
+        /// </summary>
+        private bool isProgressVisible;
+        public bool IsProgressVisible
+        {
+            get => isProgressVisible;
+            set
+            {
+                isProgressVisible = value;
+                RaisePropertyChanged("IsProgressVisible");
+            }
+        }
+
+        /// <summary>
+        /// Если высокий приоритет видимый.
+        /// </summary>
+        private bool isTopPriorityVisible;
+        public bool IsTopPriorityVisible
+        {
+            get => isTopPriorityVisible;
+            set
+            {
+                isTopPriorityVisible = value;
+                RaisePropertyChanged("IsTopPriorityVisible");
+            }
+        }
+
+        /// <summary>
         /// Если в процессе.
         /// </summary>
-        private bool inProgress = true; //
+        private bool inProgress = true;
         public bool InProgress
         {
             get => inProgress;
@@ -84,7 +127,7 @@ namespace ViewModels.Cards
         /// <summary>
         /// Если высокий приоритет.
         /// </summary>
-        private bool isTopPriority = true; //
+        private bool isTopPriority;
         public bool IsTopPriority
         {
             get => isTopPriority;
@@ -133,6 +176,12 @@ namespace ViewModels.Cards
             }
         }
 
+
+        public RelayCommand SwitchTopPriority { get; set; }
+
+        public RelayCommand SwitchStatus { get; set; }
+
+
         public CardVM(ObservableCollection<ICardPanel> cardPanels)
         {
             CardPanels.CollectionChanged += (s, e) =>
@@ -158,6 +207,49 @@ namespace ViewModels.Cards
             cardPanels.ForEach(f => CardPanels.Add(f));
 
             Key = ConnectionsControl.CreateNewKey(this);
+
+
+            SwitchTopPriority = new RelayCommand(SwitchTopPriorityMethod);
+            SwitchStatus = new RelayCommand(SwitchStatusMethod);
+        }
+
+        /// <summary>
+        /// Включает режим редактирования.
+        /// </summary>
+        private void EnableEditMode(bool isEdit)
+        {
+            IsProgressVisible = !InProgress;
+            IsTopPriorityVisible = !IsTopPriority;
+
+            if (isEdit == true)
+            {
+                CardPanels.ForEach(f => f.IsEdit = true);
+            }
+            else
+            {
+                CardPanels.ForEach(f => f.IsEdit = false);
+
+                IsProgressVisible = false;
+                IsTopPriorityVisible = false;
+            }     
+        }
+
+        /// <summary>
+        /// Меняет приоритет.
+        /// </summary>
+        public void SwitchTopPriorityMethod(object param)
+        {
+            IsTopPriority = !IsTopPriority;
+            IsTopPriorityVisible = !IsTopPriority;
+        }
+        
+        /// <summary>
+        /// Меняет статус.
+        /// </summary>
+        public void SwitchStatusMethod(object param)
+        {
+            InProgress = !InProgress;
+            IsProgressVisible = !InProgress;
         }
 
         /// <summary>

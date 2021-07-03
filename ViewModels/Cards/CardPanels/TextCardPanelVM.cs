@@ -6,6 +6,20 @@ namespace ViewModels.Cards.CardPanels
     public class TextCardPanelVM : ViewModelBase, ICardPanel
     {
         /// <summary>
+        /// Если включен режим редактирования.
+        /// </summary>
+        private bool isEdit;
+        public bool IsEdit
+        {
+            get => isEdit;
+            set
+            {
+                isEdit = value;
+                RaisePropertyChanged("IsEdit");
+            }
+        }
+
+        /// <summary>
         /// Если выполнено.
         /// </summary>
         private bool isDone;
