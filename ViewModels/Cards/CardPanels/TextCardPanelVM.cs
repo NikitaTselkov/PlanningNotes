@@ -1,10 +1,16 @@
 ﻿using Catel.MVVM;
 using Models.Interfaces;
+using System;
 
 namespace ViewModels.Cards.CardPanels
 {
     public class TextCardPanelVM : ViewModelBase, ICardPanel
     {
+        /// <summary>
+        /// Событие изменения IsDone.
+        /// </summary>
+        public event EventHandler IsDoneChanged;
+
         /// <summary>
         /// Если включен режим редактирования.
         /// </summary>
@@ -29,6 +35,7 @@ namespace ViewModels.Cards.CardPanels
             set
             {
                 isDone = value;
+                IsDoneChanged?.Invoke(isDone, new EventArgs());
                 RaisePropertyChanged("IsDone");
             }
         }

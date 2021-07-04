@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UI.UserControls.CardPanels"
+             xmlns:Converter="clr-namespace:ViewModels.Converters;assembly=ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="100" 
              d:DesignWidth="300"
@@ -12,26 +13,36 @@
              MaxHeight="400"
              MaxWidth="500">
 
+    <UserControl.Resources>
+        <Converter:BoolToVisibility x:Key="BoolToVisibility" />
+    </UserControl.Resources>
+    
     <Grid>
 
         <Border BorderBrush="{StaticResource Gray2}" BorderThickness="1 0 0 0" Margin="0 -100 0 20" />
 
         <Border Background="{StaticResource Gray}" BorderBrush="{StaticResource Gray2}" BorderThickness="1 0 0 1" CornerRadius="0 0 0 15">
 
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10">
+            <StackPanel>
 
-                <TextBox
-                    IsHitTestVisible="{Binding IsEdit}"
-                    Background="Transparent"
-                    BorderThickness="0"
-                    FontFamily="/Styles/Fonts/#Maven Pro - Black.ttf"
-                    FontSize="12"
-                    Foreground="{StaticResource LightGray2}"
-                    TextWrapping="Wrap"
-                    Text="{Binding Text}" 
-                />
+                <CheckBox IsChecked="{Binding IsDone}" Content="Done" Style="{StaticResource CheckBoxStyle}" IsHitTestVisible="{Binding IsEdit}" />
 
-            </ScrollViewer>
+                <ScrollViewer MaxHeight="170" VerticalScrollBarVisibility="Auto" Margin="10">
+
+                    <TextBox
+                        IsHitTestVisible="{Binding IsEdit}"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        FontFamily="/Styles/Fonts/#Maven Pro - Black.ttf"
+                        FontSize="12"
+                        Foreground="{StaticResource LightGray2}"
+                        TextWrapping="Wrap"
+                        Text="{Binding Text}" 
+                    />
+
+                </ScrollViewer>
+
+            </StackPanel>
 
         </Border>
 

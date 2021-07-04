@@ -33,7 +33,66 @@
         </Setter>
     </Style>
 
+    <Style x:Key="CheckBoxStyle" TargetType="{x:Type CheckBox}">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="{StaticResource Gray}"/>
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Margin" Value="10 10 10 5" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="MaxWidth" Value="120"/>
+        <Setter Property="MaxHeight" Value="40"/>
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontFamily" Value="/Styles/Fonts/#Maven Pro - SemiBold.ttf" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <Border Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Background="{TemplateBinding Background}">
 
+                        <DockPanel>
+
+                            <Ellipse
+                                x:Name="ellipse"
+                                Width="8"
+                                Height="8"
+                                Fill="{StaticResource Green}"
+                            />
+
+                            <ContentPresenter
+                                x:Name="contentPresenter" 
+                                Focusable="False" 
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Margin="5 0"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            />
+
+                        </DockPanel>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Cursor" Value="Hand" />
+                        </Trigger>
+
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter TargetName="ellipse" Property="Fill" Value="{StaticResource Red}" />
+                            <Setter TargetName="contentPresenter" Property="Content" Value="Not completed" />
+                        </Trigger>
+                        
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 
     <SolidColorBrush x:Key="StandardBorderBrush" Color="#888" />

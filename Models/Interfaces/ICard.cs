@@ -45,7 +45,7 @@ namespace Models.Interfaces
         /// <summary>
         /// Прогресс выполнения.
         /// </summary>
-        public double Progress { get; }
+        public int Progress { get; }
 
         /// <summary>
         /// Кол-во выполненных заданий.

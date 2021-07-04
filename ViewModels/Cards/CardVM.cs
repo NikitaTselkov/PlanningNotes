@@ -141,9 +141,9 @@ namespace ViewModels.Cards
         /// <summary>
         /// Прогресс выполнения.
         /// </summary>
-        public double Progress
+        public int Progress
         {
-            get => NumberOfTasks != 0 ? NumberOfCompletedTasks / NumberOfTasks * 100 : 0;
+            get => Convert.ToInt32(NumberOfTasks != 0 ? NumberOfCompletedTasks / NumberOfTasks * 100 : 0);
         }
 
         /// <summary>
@@ -206,11 +206,15 @@ namespace ViewModels.Cards
 
             cardPanels.ForEach(f => CardPanels.Add(f));
 
+            CardPanels.ForEach(f => f.IsDoneChanged += (s, e) => Update());
+
             Key = ConnectionsControl.CreateNewKey(this);
 
 
             SwitchTopPriority = new RelayCommand(SwitchTopPriorityMethod);
             SwitchStatus = new RelayCommand(SwitchStatusMethod);
+
+
         }
 
         /// <summary>

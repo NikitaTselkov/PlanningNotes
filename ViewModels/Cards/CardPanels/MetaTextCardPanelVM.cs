@@ -9,6 +9,11 @@ namespace ViewModels.Cards.CardPanels
     public class MetaTextCardPanelVM : ViewModelBase, ICardPanel
     {
         /// <summary>
+        /// Событие изменения IsDone.
+        /// </summary>
+        public event EventHandler IsDoneChanged;
+
+        /// <summary>
         /// Если включен режим редактирования.
         /// </summary>
         private bool isEdit;
@@ -32,6 +37,7 @@ namespace ViewModels.Cards.CardPanels
             set
             {
                 isDone = value;
+                IsDoneChanged?.Invoke(isDone, new EventArgs());
                 RaisePropertyChanged("IsDone");
             }
         }
