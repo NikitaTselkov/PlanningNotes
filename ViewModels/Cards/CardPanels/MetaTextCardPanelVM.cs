@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ViewModels.Cards.CardPanels
 {
-    public class MetaTextCardPanelVM : ViewModelBase, ICardPanel
+    public sealed class MetaTextCardPanelVM : ViewModelBase, ICardPanel
     {
         /// <summary>
         /// Событие изменения IsDone.

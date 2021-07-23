@@ -7,7 +7,7 @@ using ViewModels.Cards.CardPanels;
 
 namespace ViewModels
 {
-    public class WidthTemplateSelector : DataTemplateSelector
+    public sealed class WidthTemplateSelector : DataTemplateSelector
     {
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {

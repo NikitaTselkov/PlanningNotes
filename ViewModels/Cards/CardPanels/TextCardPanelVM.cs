@@ -4,7 +4,7 @@ using System;
 
 namespace ViewModels.Cards.CardPanels
 {
-    public class TextCardPanelVM : ViewModelBase, ICardPanel
+    public sealed class TextCardPanelVM : ViewModelBase, ICardPanel
     {
         /// <summary>
         /// Событие изменения IsDone.

@@ -6,7 +6,7 @@ using System.Windows.Media.Imaging;
 
 namespace ViewModels.Cards.CardPanels
 {
-    public class ImageCardPanelVM : ViewModelBase, ICardPanel
+    public sealed class ImageCardPanelVM : ViewModelBase, ICardPanel
     {
         /// <summary>
         /// Событие изменения IsDone.

@@ -40,7 +40,7 @@
 
                             <Image Width="310" Source="{Binding Image.UriSource}" />
 
-                            <ScrollViewer MaxHeight="170" Margin="10" VerticalScrollBarVisibility="Auto">
+                            <ScrollViewer MaxHeight="110" Margin="10" VerticalScrollBarVisibility="Auto">
 
                                 <TextBox
                                     IsHitTestVisible="{Binding IsEdit}"

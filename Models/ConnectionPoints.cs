@@ -5,7 +5,7 @@ using System.Windows;
 
 namespace Models
 {
-    public class ConnectionPoints
+    public struct ConnectionPoints
     {
         public Point Point1 { get; private set; }
 

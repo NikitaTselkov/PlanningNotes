@@ -83,7 +83,7 @@
 
             <DockPanel Grid.Row="0" LastChildFill="False">
 
-                <Button Style="{StaticResource AddCardButton}" DockPanel.Dock="Right" Margin="0 0 20 0" />
+                <Button Command="{Binding AddCardOrConnection}" Style="{StaticResource AddCardButton}" DockPanel.Dock="Right" Margin="0 0 20 0" />
 
                 <Border DockPanel.Dock="Right" Margin="0 0 10 0" Width="290" Height="50" Background="{StaticResource DarkGray}" CornerRadius="2">
                     <DockPanel LastChildFill="False">

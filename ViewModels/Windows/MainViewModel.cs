@@ -13,7 +13,7 @@ using ViewModels.Cards.CardPanels;
 
 namespace ViewModels.Windows
 {
-    public class MainViewModel : ViewModelBase
+    public sealed class MainViewModel : ViewModelBase
     {
         /// <summary>
         /// Ширина левой панели в процентах.
@@ -95,11 +95,15 @@ namespace ViewModels.Windows
 
         public RelayCommand SwitchEditMode{ get; set; }
 
+        public RelayCommand AddCardOrConnection { get; set; }
+
         public MainViewModel()
         {
             SwitchPanels = new RelayCommand(SwitchPanelsMethod);
 
             SwitchEditMode = new RelayCommand(SwitchEditModeMethod);
+
+            AddCardOrConnection = new RelayCommand(AddCardOrConnectionMethod);
 
             #region Test
 
@@ -168,6 +172,16 @@ namespace ViewModels.Windows
             {
                 Cards.ForEach(f => f.IsEdit = false);
             }
+        }
+
+        /// <summary>
+        /// Открывает диалоговое окно создания карты или связи.
+        /// </summary>
+        public void AddCardOrConnectionMethod(object param)
+        {
+            var addCardOrConnectionVM = new AddCardOrConnectionVM();
+
+            WindowService.DisplayRootRegistry.ShowModalPresentation(addCardOrConnectionVM);
         }
 
     }

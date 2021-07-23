@@ -18,7 +18,7 @@ using ViewModels.Cards.CardPanels;
 
 namespace ViewModels.Cards
 {
-    public class CardVM : ViewModelBase, ICard
+    public sealed class CardVM : ViewModelBase, ICard
     {
         /// <summary>
         ///  Список панелей.
@@ -213,8 +213,6 @@ namespace ViewModels.Cards
 
             SwitchTopPriority = new RelayCommand(SwitchTopPriorityMethod);
             SwitchStatus = new RelayCommand(SwitchStatusMethod);
-
-
         }
 
         /// <summary>

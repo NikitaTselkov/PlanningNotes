@@ -7,7 +7,7 @@ using System.Windows.Data;
 
 namespace ViewModels.Converters
 {
-    public class BoolToVisibility : IValueConverter
+    public sealed class BoolToVisibility : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

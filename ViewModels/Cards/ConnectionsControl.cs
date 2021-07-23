@@ -50,6 +50,14 @@ namespace ViewModels.Cards
         }
 
         /// <summary>
+        /// Удалить ключ.
+        /// </summary>
+        public static void DeleteKey(Guid key)
+        {
+            Keys.Remove(key);
+        }
+
+        /// <summary>
         /// Создать связь.
         /// </summary>
         public static void CreateConnection(Guid key, Guid foreignKey)

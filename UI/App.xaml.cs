@@ -21,6 +21,7 @@ namespace UI
         public App()
         {
             DisplayRootRegistry.RegisterWindowType<MainViewModel, MainWindow>();
+            DisplayRootRegistry.RegisterWindowType<AddCardOrConnectionVM, AddCardOrConnection>();
         }
 
         protected override void OnStartup(StartupEventArgs e)
