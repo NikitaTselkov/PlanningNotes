@@ -54,7 +54,7 @@ namespace UI.UserControls
         {
             Position = PointToScreen(new Point(0, -58)); // -58 значение для подгонки PointOfConnection к DrawConnection.
 
-            ICard card = ConnectionsControl.GetCard(Key);
+            ICard card = CardsControl.GetCard(Key);
 
             if (card.LeftPoint == new Point())
             {

@@ -68,6 +68,8 @@ namespace ViewModels
 
             if (((FrameworkElement)sender).DataContext is CardVM cardVM)
             {
+                CardsControl.SelectCard(cardVM);
+
                 _transformLeftPoints.X = cardVM.LeftPoint.X;
                 _transformLeftPoints.Y = cardVM.LeftPoint.Y;
 
@@ -103,7 +105,7 @@ namespace ViewModels
                     cardVM.LeftPoint = new Point(_transformLeftPoints.X + diff.X, _transformLeftPoints.Y + diff.Y);
                     cardVM.RightPoint = new Point(_transformRightPoints.X + diff.X, _transformRightPoints.Y + diff.Y);
 
-                    ConnectionsControl.GetConnectionPoints();
+                    CardsControl.GetConnectionPoints();
                 }
             }
 

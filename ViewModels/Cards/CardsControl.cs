@@ -2,14 +2,19 @@
 using Models.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
 
 namespace ViewModels.Cards
 {
-    public static class ConnectionsControl
+    public static class CardsControl
     {
+
+        // Список карт.
+        public static ObservableCollection<ICard> Cards = new ObservableCollection<ICard>();
+
         // Ключи.
         private static readonly Dictionary<Guid, ICard> Keys = new Dictionary<Guid, ICard>();
 
@@ -25,17 +30,53 @@ namespace ViewModels.Cards
 
 
         /// <summary>
+        /// Текущая карта.
+        /// </summary>
+        public static ICard CurrentCard { get; private set; }
+
+        /// <summary>
+        /// Добавляет карту.
+        /// </summary>
+        public static void AddCard(ICard card)
+        {
+            Cards.Add(card);
+            CreateNewKey(card);
+            CurrentCard = card;
+        }
+
+        /// <summary>
+        /// Добавляет СardPanel в карту.
+        /// </summary>
+        public static void AddCardPanel(ICardPanel cardPanel)
+        {
+            var index = GetCardIndex(CurrentCard);
+
+            if (index != -1)
+            {
+                Cards[index].CardPanels.Add(cardPanel);
+            }
+        }
+
+        /// <summary>
+        /// Делает выбранную карту текущей.
+        /// </summary>
+        public static void SelectCard(ICard card)
+        {
+            CurrentCard = card;
+        }
+
+        /// <summary>
         /// Проверка, если такой ключ уже есть.
         /// </summary>
         public static bool HasKey(Guid key)
         {
-            return Keys.Any(a => a.Key == key);
+            return Cards.Any(a => a.Key == key);
         }
 
         /// <summary>
         /// Создать новый ключ.
         /// </summary>
-        public static Guid CreateNewKey(ICard card)
+        public static void CreateNewKey(ICard card)
         {
             var key = Guid.NewGuid();
 
@@ -46,7 +87,7 @@ namespace ViewModels.Cards
 
             Keys.Add(key, card);
 
-            return key;
+            card.Key = key;
         }
 
         /// <summary>
@@ -138,6 +179,16 @@ namespace ViewModels.Cards
             }
 
             СonnectionPointsChanged?.Invoke(СonnectionPoints, new EventArgs());
+        }
+
+        /// <summary>
+        /// Возвращает index карты.
+        /// </summary>
+        private static int GetCardIndex(ICard card)
+        {
+            var result = Cards.Select((c, index) => (c, index: index += 1)).FirstOrDefault(f => f.c == card);
+
+            return result.c == null ? -1 : result.index - 1;
         }
     }
 }

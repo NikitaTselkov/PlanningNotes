@@ -208,9 +208,6 @@ namespace ViewModels.Cards
 
             CardPanels.ForEach(f => f.IsDoneChanged += (s, e) => Update());
 
-            Key = ConnectionsControl.CreateNewKey(this);
-
-
             SwitchTopPriority = new RelayCommand(SwitchTopPriorityMethod);
             SwitchStatus = new RelayCommand(SwitchStatusMethod);
         }

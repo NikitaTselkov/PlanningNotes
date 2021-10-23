@@ -5,18 +5,18 @@ using Models.Interfaces;
 namespace ViewModels.Cards.Tests
 {
     [TestClass()]
-    public class ConnectionsControlTests
+    public class CardsControlTests
     {
         [TestMethod()]
         public void CreateNewKeyTest()
         {
-            // CreateNewKey вызывается в конструкторе класса CardVM.
-
             CardVM card = new CardVM(new ObservableCollection<ICardPanel>());
 
-            Assert.IsTrue(ConnectionsControl.HasKey(card.Key));
+            CardsControl.AddCard(card);
 
-            ConnectionsControl.DeleteKey(card.Key);
+            Assert.IsTrue(CardsControl.HasKey(card.Key));
+
+            CardsControl.DeleteKey(card.Key);
         }
 
         [TestMethod()]
@@ -26,15 +26,19 @@ namespace ViewModels.Cards.Tests
             CardVM card2 = new CardVM(new ObservableCollection<ICardPanel>());
             CardVM card3 = new CardVM(new ObservableCollection<ICardPanel>());
 
-            var keys = ConnectionsControl.GetKeys();
+            CardsControl.AddCard(card1);
+            CardsControl.AddCard(card2);
+            CardsControl.AddCard(card3);
+
+            var keys = CardsControl.GetKeys();
 
             Assert.AreEqual(card1.Key, keys[0]);
             Assert.AreEqual(card2.Key, keys[1]);
             Assert.AreEqual(card3.Key, keys[2]);
 
-            ConnectionsControl.DeleteKey(card1.Key);
-            ConnectionsControl.DeleteKey(card2.Key);
-            ConnectionsControl.DeleteKey(card3.Key);
+            CardsControl.DeleteKey(card1.Key);
+            CardsControl.DeleteKey(card2.Key);
+            CardsControl.DeleteKey(card3.Key);
         }
 
         [TestMethod()]
@@ -42,11 +46,13 @@ namespace ViewModels.Cards.Tests
         {
             CardVM card = new CardVM(new ObservableCollection<ICardPanel>());
 
-            var key = ConnectionsControl.GetKey(card);
+            CardsControl.AddCard(card);
+
+            var key = CardsControl.GetKey(card);
 
             Assert.AreEqual(card.Key, key);
 
-            ConnectionsControl.DeleteKey(card.Key);
+            CardsControl.DeleteKey(card.Key);
         }
 
         [TestMethod()]
@@ -54,11 +60,13 @@ namespace ViewModels.Cards.Tests
         {
             CardVM card = new CardVM(new ObservableCollection<ICardPanel>());
 
-            var card1 = ConnectionsControl.GetCard(card.Key);
+            CardsControl.AddCard(card);
+
+            var card1 = CardsControl.GetCard(card.Key);
 
             Assert.AreEqual(card, card1);
 
-            ConnectionsControl.DeleteKey(card.Key);
+            CardsControl.DeleteKey(card.Key);
         }
     }
 }
