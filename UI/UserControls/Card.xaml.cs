@@ -1,5 +1,4 @@
-﻿using GalaSoft.MvvmLight.Messaging;
-using Models.Interfaces;
+﻿using Models.Interfaces;
 using System.Windows.Controls;
 using UI.UserControls.CardPanels;
 

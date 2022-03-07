@@ -1,7 +1,6 @@
 ﻿using Catel.Collections;
 using Catel.Linq;
 using Catel.MVVM;
-using GalaSoft.MvvmLight.Messaging;
 using Models;
 using Models.Interfaces;
 using System;

@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <PackageReference Include="Denxorz.ZoomControl" Version="1.1.0" />
-    <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
   </ItemGroup>
 
   <ItemGroup>

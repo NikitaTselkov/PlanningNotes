@@ -46,7 +46,7 @@ namespace ViewModels.Cards.CardPanels
         /// Заголовок.
         /// </summary>
         private string title;
-        public string Title
+        public new string Title
         {
             get => title;
             set

@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:denxorz="clr-namespace:Denxorz.ZoomControl;assembly=Denxorz.ZoomControl"
-        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:local="clr-namespace:UI"
         xmlns:UC="clr-namespace:UI.UserControls"
         xmlns:cards="clr-namespace:ViewModels.Cards;assembly=ViewModels"

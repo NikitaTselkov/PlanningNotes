@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViewModels", "ViewModels\Vi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{B79D7134-18CC-44AE-8477-22421467C40A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModelsTests", "ViewModelsTests\ViewModelsTests.csproj", "{0189B303-3967-4F52-8F68-513CD1E6C6EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViewModelsTests", "ViewModelsTests\ViewModelsTests.csproj", "{0189B303-3967-4F52-8F68-513CD1E6C6EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Git", "Git\Git.csproj", "{97A12EC9-9F69-4565-8F78-7111B469CAFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{0189B303-3967-4F52-8F68-513CD1E6C6EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0189B303-3967-4F52-8F68-513CD1E6C6EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0189B303-3967-4F52-8F68-513CD1E6C6EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97A12EC9-9F69-4565-8F78-7111B469CAFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97A12EC9-9F69-4565-8F78-7111B469CAFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97A12EC9-9F69-4565-8F78-7111B469CAFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97A12EC9-9F69-4565-8F78-7111B469CAFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
