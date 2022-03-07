@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using ViewModels.Windows;
-using ViewModels.WindowService;
+using ViewModels.WindowAndPageService;
 using UI.Windows;
 
 namespace UI

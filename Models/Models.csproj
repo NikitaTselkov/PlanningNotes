@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Catel.MVVM" Version="5.12.16" />
+    <PackageReference Include="Catel.MVVM" Version="5.12.22" />
   </ItemGroup>
 
 </Project>

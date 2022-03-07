@@ -57,22 +57,14 @@
                         </Trigger>
 
                         <Trigger Property="IsPressed" Value="True">
-                            
+
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <ThicknessAnimation Storyboard.TargetName="content" Storyboard.TargetProperty="Margin" From="0" To="25" Duration="0:0:0.5" />
+                                        <ThicknessAnimation Storyboard.TargetName="content" Storyboard.TargetProperty="Margin" From="0" To="25" Duration="0:0:0.2" AutoReverse="True" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
-
-                            <Trigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ThicknessAnimation Storyboard.TargetName="content" Storyboard.TargetProperty="Margin" From="25" To="0" Duration="0:0:0.5" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.ExitActions>
 
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -100,8 +92,12 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}">
 
-                        <ContentPresenter x:Name="content" HorizontalAlignment="Center" VerticalAlignment="Center" />
-
+                        <TextBlock 
+                            Text="{Binding RelativeSource={RelativeSource AncestorType=RadioButton, Mode=FindAncestor}, Path=Content}"
+                            Foreground="{TemplateBinding Foreground}"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center" />
+                        
                     </Border>
 
                     <ControlTemplate.Triggers>

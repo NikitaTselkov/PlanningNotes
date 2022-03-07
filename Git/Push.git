@@ -2,7 +2,7 @@
 
 pull origin master
 
-:commitMessage = String(Added Git-file and deleted navigation folder)
+:commitMessage = String(Added a window for creating a card or connection)
 
 :tag = describe --tags => (0, 1) --> Ignore
 :tag = Skip({tag}, 1) --> Ignore

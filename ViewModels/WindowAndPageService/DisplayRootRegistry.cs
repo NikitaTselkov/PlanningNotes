@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
-namespace ViewModels.WindowService
+namespace ViewModels.WindowAndPageService
 {
     public static class DisplayRootRegistry
     {
-        static Dictionary<Type, Type> vmToWindowMapping = new Dictionary<Type, Type>();
+        private static Dictionary<Type, Type> _vmToWindowMapping = new Dictionary<Type, Type>();
+        private static Dictionary<Type, Type> _vmToPageMapping = new Dictionary<Type, Type>();
 
         /// <summary>
         /// Регистрирует окно.
@@ -20,26 +22,56 @@ namespace ViewModels.WindowService
             var vmType = typeof(VM);
             if (vmType.IsInterface)
                 throw new ArgumentException("Cannot register interfaces");
-            if (vmToWindowMapping.ContainsKey(vmType))
+            if (_vmToWindowMapping.ContainsKey(vmType))
                 throw new InvalidOperationException(
                     $"Type {vmType.FullName} is already registered");
-            vmToWindowMapping[vmType] = typeof(Win);
+            _vmToWindowMapping[vmType] = typeof(Win);
+        }
+
+        /// <summary>
+        /// Регистрирует страницу.
+        /// </summary>
+        /// <typeparam name="VM"> ViewModel. </typeparam>
+        /// <typeparam name="Page"> Страница. </typeparam>
+        public static void RegisterPageType<VM, Page>() where Page : System.Windows.Controls.Page, new() where VM : class
+        {
+            var vmType = typeof(VM);
+            if (vmType.IsInterface)
+                throw new ArgumentException("Cannot register interfaces");
+            if (_vmToPageMapping.ContainsKey(vmType))
+                throw new InvalidOperationException(
+                    $"Type {vmType.FullName} is already registered");
+            _vmToPageMapping[vmType] = typeof(Page);
         }
 
         /// <summary>
         /// Удаляет регистрацию окна.
         /// </summary>
         /// <typeparam name="VM"> ViewModel. </typeparam>
-        /// <typeparam name="Win"> Окно. </typeparam>
         public static void UnregisterWindowType<VM>()
         {
             var vmType = typeof(VM);
             if (vmType.IsInterface)
                 throw new ArgumentException("Cannot register interfaces");
-            if (!vmToWindowMapping.ContainsKey(vmType))
+            if (!_vmToWindowMapping.ContainsKey(vmType))
                 throw new InvalidOperationException(
                     $"Type {vmType.FullName} is not registered");
-            vmToWindowMapping.Remove(vmType);
+            _vmToWindowMapping.Remove(vmType);
+        }
+
+        /// <summary>
+        /// Удаляет регистрацию страницы.
+        /// </summary>
+        /// <typeparam name="VM"> ViewModel. </typeparam>
+        public static void UnregisterPageType<VM>()
+        {
+            var vmType = typeof(VM);
+            if (vmType.IsInterface)
+                throw new ArgumentException("Cannot register interfaces");
+            if (!_vmToPageMapping.ContainsKey(vmType))
+                throw new InvalidOperationException(
+                    $"Type {vmType.FullName} is not registered");
+            _vmToPageMapping.Remove(vmType);
         }
 
         /// <summary>
@@ -54,7 +86,7 @@ namespace ViewModels.WindowService
             Type windowType = null;
 
             var vmType = vm.GetType();
-            while (vmType != null && !vmToWindowMapping.TryGetValue(vmType, out windowType))
+            while (vmType != null && !_vmToWindowMapping.TryGetValue(vmType, out windowType))
                 vmType = vmType.BaseType;
 
             if (windowType == null)
@@ -64,6 +96,30 @@ namespace ViewModels.WindowService
             var window = (Window)Activator.CreateInstance(windowType);
             window.DataContext = vm;
             return window;
+        }
+
+        /// <summary>
+        /// Создает экземпляр страницы с помощью ViewModel.
+        /// </summary>
+        /// <param name="vm"> ViewModel. </param>
+        /// <returns> Страницу. </returns>
+        public static Page CreatePageInstanceWithVM(object vm)
+        {
+            if (vm == null)
+                throw new ArgumentNullException("vm");
+            Type pageType = null;
+
+            var vmType = vm.GetType();
+            while (vmType != null && !_vmToPageMapping.TryGetValue(vmType, out pageType))
+                vmType = vmType.BaseType;
+
+            if (pageType == null)
+                throw new ArgumentException(
+                    $"No registered page type for argument type {vm.GetType().FullName}");
+
+            var page = (Page)Activator.CreateInstance(pageType);
+            page.DataContext = vm;
+            return page;
         }
 
         static Dictionary<object, Window> openWindows = new Dictionary<object, Window>();

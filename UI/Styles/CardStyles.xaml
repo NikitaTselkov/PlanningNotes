@@ -18,7 +18,11 @@
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="2">
 
-                        <ContentPresenter x:Name="content" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <TextBlock 
+                            Text="{Binding RelativeSource={RelativeSource AncestorType=Button, Mode=FindAncestor}, Path=Content}"
+                            Foreground="{TemplateBinding Foreground}"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center" />
 
                     </Border>
 
@@ -66,7 +70,7 @@
                             <ContentPresenter
                                 x:Name="contentPresenter" 
                                 Focusable="False" 
-                                HorizontalAlignment="Center"
+                                HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 Margin="5 0"
                                 RecognizesAccessKey="True"

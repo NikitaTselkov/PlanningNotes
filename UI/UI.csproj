@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Catel.MVVM" Version="5.12.22" />
     <PackageReference Include="Denxorz.ZoomControl" Version="1.1.0" />
   </ItemGroup>
 
@@ -34,6 +35,10 @@
     <Resource Include="Styles\Fonts\MavenPro-Regular.ttf" />
     <Resource Include="Styles\Fonts\MavenPro-SemiBold.ttf" />
     <Resource Include="Styles\Fonts\MavenPro-VariableFont_wght.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\" />
   </ItemGroup>
 
 </Project>

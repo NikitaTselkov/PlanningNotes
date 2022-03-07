@@ -17,6 +17,8 @@
 
                 <ResourceDictionary Source="Styles/Colors.xaml" />
 
+                <ResourceDictionary Source="Styles/DefaultStyles.xaml" />
+
                 <ResourceDictionary Source="Styles/NotesStyles.xaml" />
 
                 <ResourceDictionary Source="Styles/CardsPanelStyles.xaml" />

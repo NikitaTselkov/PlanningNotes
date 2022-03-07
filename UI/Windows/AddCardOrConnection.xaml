@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI.Windows"
+        xmlns:Converters="clr-namespace:ViewModels.Converters;assembly=ViewModels"
         mc:Ignorable="d"
         Title="AddCardOrConnection"
         Height="250"
@@ -11,9 +12,81 @@
         WindowStyle="ToolWindow"
         WindowStartupLocation="CenterOwner">
 
-    <Grid Background="{StaticResource Gray}">
+    <Window.Resources>
+        <Converters:BoolToVisibility x:Key="BoolToVisibility" />
+    </Window.Resources>
 
-        <Button Command="{Binding Close}" VerticalAlignment="Bottom" IsHitTestVisible="True" Style="{StaticResource CardButton}" Content="Accept" FontFamily="/Styles/Fonts/#Maven Pro - Black.ttf" Background="{StaticResource OpacityGreen}" BorderBrush="{StaticResource Green}" Foreground="{StaticResource Green}" />
+    <Grid Background="{StaticResource Gray}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel
+            HorizontalAlignment="Center"
+            Grid.Row="0">
+            
+            <RadioButton Content="Card" IsChecked="{Binding IsSelectedCard}" Style="{StaticResource DisplayModesButton}" />
+            <RadioButton Content="Connection" IsChecked="{Binding IsSelectedConnection}" Style="{StaticResource DisplayModesButton}" />
+        </DockPanel>
+
+        <Grid Grid.Row="1">
+
+            <StackPanel
+                Visibility="{Binding IsSelectedCard, Converter={StaticResource BoolToVisibility}}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Width="160">
+                
+                <TextBlock Margin="0 0 0 5" FontSize="18" Text="Card title" />
+                <TextBox Padding="1 0" Text="{Binding CardTitle}" FontSize="15" />
+                
+            </StackPanel>
+
+            <DockPanel
+                Visibility="{Binding IsSelectedConnection, Converter={StaticResource BoolToVisibility}}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+
+                <StackPanel
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="5"
+                    Width="100">
+
+                    <TextBlock Margin="0 0 0 5" FontSize="18" Text="Card 1" />
+                    <ComboBox ItemsSource="{Binding CardTitles}" />
+
+                </StackPanel>
+
+                <StackPanel
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="5"
+                    Width="100">
+
+                    <TextBlock Margin="0 0 0 5" FontSize="18" Text="Card 2" />
+                    <ComboBox ItemsSource="{Binding CardTitles}" />
+
+                </StackPanel>
+
+            </DockPanel>
+
+        </Grid>
+
+        <Button
+            Command="{Binding Accept}"
+            VerticalAlignment="Center"
+            IsHitTestVisible="True"
+            Style="{StaticResource CardButton}"
+            Content="Accept"
+            FontFamily="/Styles/Fonts/#Maven Pro - Black.ttf"
+            Background="{StaticResource OpacityGreen}"
+            BorderBrush="{StaticResource Green}"
+            Foreground="{StaticResource Green}"
+            Margin="0"
+            Grid.Row="2" />
 
     </Grid>
 </Window>
