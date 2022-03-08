@@ -114,7 +114,7 @@ namespace ViewModels.Windows
 
             #endregion
 
-            CardsControl.AddCard(new CardVM(cardPanels));
+            CardsControl.AddCard(new CardVM("Card 1", cardPanels));
 
             //var key = CardsControl.GetKey(Cards[0]);
             //var foreginKey = CardsControl.GetKey(Cards[1]);

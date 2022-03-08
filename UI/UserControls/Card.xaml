@@ -40,7 +40,7 @@
         <Border Margin="15 0" BorderBrush="{StaticResource Gray2}" BorderThickness="0 0 0 1" VerticalAlignment="Bottom">
             <DockPanel Margin="0 0 0 8">
 
-                <TextBlock Text="Sun" FontFamily="/Styles/Fonts/#Maven Pro - SemiBold.ttf" Foreground="White" FontSize="23" />
+                <TextBlock Text="{Binding Title}" FontFamily="/Styles/Fonts/#Maven Pro - SemiBold.ttf" Foreground="White" FontSize="23" />
 
                 <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Background="Transparent">
                     <TextBlock Text="{Binding ElementName=progressBar, Path=Value, StringFormat={}{0}%}" FontSize="10" Foreground="{StaticResource LightGray}" HorizontalAlignment="Right" />

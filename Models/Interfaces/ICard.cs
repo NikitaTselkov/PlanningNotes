@@ -5,8 +5,13 @@ using System.Windows;
 
 namespace Models.Interfaces
 {
-    public interface ICard 
+    public interface ICard
     {
+        /// <summary>
+        /// Заголовок.
+        /// </summary>
+        public string Title { get; set; }
+
         /// <summary>
         /// Ключ.
         /// </summary>

@@ -137,6 +137,22 @@ namespace ViewModels.Cards
         }
 
         /// <summary>
+        /// Получает элемент по title.
+        /// </summary>
+        public static ICard GetCardByTitle(string title)
+        {
+            return Cards.FirstOrDefault(f => f.Title == title);
+        }
+
+        /// <summary>
+        /// Получает список имен карт.
+        /// </summary>
+        public static List<string> GetCardTitles()
+        {
+            return Cards.Select(s => s.Title).ToList();
+        }
+
+        /// <summary>
         /// Получает точки связи элемента.
         /// </summary>
         public static void GetConnectionPoints()

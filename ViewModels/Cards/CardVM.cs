@@ -25,6 +25,20 @@ namespace ViewModels.Cards
         public ObservableCollection<ICardPanel> CardPanels { get; private set; } = new ObservableCollection<ICardPanel>();
 
         /// <summary>
+        /// Заголовок.
+        /// </summary>
+        private string title;
+        public new string Title
+        {
+            get => title;
+            set 
+            { 
+                title = value;
+                RaisePropertyChanged("Title");
+            }
+        }
+
+        /// <summary>
         /// Ключ.
         /// </summary>
         private Guid key;
@@ -112,7 +126,7 @@ namespace ViewModels.Cards
         /// <summary>
         /// Если в процессе.
         /// </summary>
-        private bool inProgress = true;
+        private bool inProgress;
         public bool InProgress
         {
             get => inProgress;
@@ -181,8 +195,10 @@ namespace ViewModels.Cards
         public RelayCommand SwitchStatus { get; set; }
 
 
-        public CardVM(ObservableCollection<ICardPanel> cardPanels)
+        public CardVM(string title, ObservableCollection<ICardPanel> cardPanels)
         {
+            Title = title;
+
             CardPanels.CollectionChanged += (s, e) =>
             {
                 // Проверка, если в списке панелей есть MetaTextCardPanelVM.
